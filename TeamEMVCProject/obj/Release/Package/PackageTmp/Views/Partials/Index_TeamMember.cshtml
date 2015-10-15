@@ -1,0 +1,42 @@
+﻿@using TeamEWebSite.App_Code
+@{
+    List<TeamMemberInfo> teamMembers = new List<TeamMemberInfo>();
+
+    TeamMemberInfo t1 = new TeamMemberInfo("Campanula L.", "assets/images/Product/ZTitle.jpg", "总策划", "Haha");
+    TeamMemberInfo t2 = new TeamMemberInfo("Dawnsward", "assets/images/Product/XTitle.jpg", "艺术设计", "Hehe");
+    TeamMemberInfo t3 = new TeamMemberInfo("Raymond", "assets/images/Product/mTitle.jpg", "程序设计", "Hihi");
+
+    teamMembers.Add(t1);
+    teamMembers.Add(t2);
+    teamMembers.Add(t3);
+}
+
+
+<div class="content-block" id="testimonials">
+    <div class="container">
+        <header class="block-heading cleafix">
+            <h1>团队成员</h1>
+            <p>Team Member Introduction</p>
+        </header>
+
+        @{
+            <section class="block-body">
+                <div class="row">
+                    @foreach (var item in teamMembers)
+                    {
+                        <div class="col-md-4">
+                            <div class="testimonial">
+                                <img src=@item.ImgSrc>
+                                <p>@item.SayContent</p>
+                                <strong>@item.Name</strong><br />
+                                <span>@item.MemberTitle</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </section>
+ 
+}
+
+    </div>
+</div>

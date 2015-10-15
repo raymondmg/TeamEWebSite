@@ -1,0 +1,62 @@
+﻿@model TeamEMVCProject.Models.LastProductedModel
+@{
+    MVCEF.Models.DbHelper db = new MVCEF.Models.DbHelper();
+    
+    //最近作品列表信息
+    Array lastProducts = db.LastProductedModule.ToArray();
+    const int MAX_ROW = 3;
+    int temCouter = 1;
+    int currentCounter = 1;
+    List<TeamEMVCProject.Models.LastProductedModel> RowTempSrc = new List<TeamEMVCProject.Models.LastProductedModel>();
+    Dictionary<int, List<TeamEMVCProject.Models.LastProductedModel>> PicDisplay = new Dictionary<int, List<TeamEMVCProject.Models.LastProductedModel>>();
+    
+    
+    foreach (TeamEMVCProject.Models.LastProductedModel lp in lastProducts)
+    {
+        temCouter = temCouter % (MAX_ROW+1);
+        if (temCouter == 0) { RowTempSrc=new List<TeamEMVCProject.Models.LastProductedModel>(); temCouter++; }
+        
+        if(temCouter<MAX_ROW)
+        {
+            RowTempSrc.Add(lp);
+        }
+        else if (temCouter == MAX_ROW)
+        {
+            RowTempSrc.Add(lp);
+            PicDisplay.Add(currentCounter, RowTempSrc);
+            currentCounter++;
+        }
+        temCouter++;
+    }   
+}
+
+<div class="content-block" id="portfolio">
+
+    @Html.Partial("~/Views/Partials/ModalComponent.cshtml");
+    <div class="container">
+        <header class="block-heading cleafix">
+            <a href="/Home/LastedProduect" class="btn btn-o btn-lg pull-right">查看全部</a>
+            <h1>近期作品展示</h1>
+            <p> Game : ONE-THIRD LIFE CHOICES</p>
+        </header>
+
+        <section class="block-body">
+            @{
+                foreach (var item in PicDisplay)
+                {
+                    <div class="row">
+
+                        @foreach (var i in item.Value)
+                        {
+                            <div class="col-sm-4">
+                                <a class="recent-work" style="background-image:url(@i.ProductImgSrc)">
+                                    <span class="btn btn-o-white" data-toggle="modal" data-target="#CurrentPicture" data-imgsrcaddress=@i.ProductImgSrc data-titleInfo=@i.ProductName>查看</span>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                }
+            }
+        </section>
+    </div>
+</div>
