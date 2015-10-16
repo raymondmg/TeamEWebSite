@@ -1,4 +1,10 @@
-﻿using MVCEF.Models;
+﻿//-----------------------------------------------【Function Indroduction】----------------------------------------------
+//	  Home Controller：  fundamental functions
+//    Language：  C#
+//    IDE：VS2013
+//    2015.10.16  Created by RaymondMG  
+//---------------------------------------------------------------------------------------------------------------------
+using MVCEF.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;

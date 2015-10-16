@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------【Function Indroduction】----------------------------------------------
+//	  DBHelper：  database connected class
+//    Language：  C#
+//    IDE：VS2013
+//    2015.10.16  Created by RaymondMG  
+//---------------------------------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

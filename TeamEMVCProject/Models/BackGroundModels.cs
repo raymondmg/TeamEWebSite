@@ -1,4 +1,10 @@
-﻿using System;
+﻿//-----------------------------------------------【Function Indroduction】----------------------------------------------
+//	  BackGroundModels：  database models
+//    Language：  C#
+//    IDE：VS2013
+//    2015.10.16  Created by RaymondMG  
+//---------------------------------------------------------------------------------------------------------------------
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

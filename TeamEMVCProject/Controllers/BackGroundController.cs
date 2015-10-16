@@ -1,4 +1,10 @@
-﻿using Microsoft.Web.WebPages.OAuth;
+﻿//-----------------------------------------------【Function Indroduction】----------------------------------------------
+//	  BackGround Controller：  background fundamental functions
+//    Language：  C#
+//    IDE：VS2013
+//    2015.10.16  Created by RaymondMG  
+//---------------------------------------------------------------------------------------------------------------------
+using Microsoft.Web.WebPages.OAuth;
 using MVCEF.Models;
 using System;
 using System.Collections.Generic;
