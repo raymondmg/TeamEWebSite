@@ -1,0 +1,55 @@
+﻿
+@{
+    List<string> RowFirpicSrc = new List<string>();
+    
+    for(int i=1;i<4;i++)
+    {
+        RowFirpicSrc.Add("assets/images/Product/pro" + i.ToString() + ".jpg");
+    }
+    
+    List<string> RowSecpicSrc = new List<string>();
+
+    for (int i = 4; i < 7; i++)
+    {
+        RowSecpicSrc.Add("assets/images/Product/pro" + i.ToString() + ".jpg");
+    }
+
+    Dictionary<int, List<string>> PicDisplay = new Dictionary<int, List<string>>();
+
+    PicDisplay.Add(1, RowFirpicSrc);
+    PicDisplay.Add(2, RowSecpicSrc);
+    
+}
+
+<div class="content-block" id="portfolio">
+    <div class="container">
+        <header class="block-heading cleafix">
+            <a href=""class="btn btn-o btn-lg pull-right">查看全部</a>
+            <h1>近期作品展示</h1>
+            <p> Game : ONE-THIRD LIFE CHOICES</p>
+        </header>
+
+        <section class="block-body">
+            @{
+                foreach (var item in PicDisplay)
+                {
+                    <div class="row">
+
+                        @foreach (var i in item.Value)
+                        {
+                            <div class="col-sm-4">
+                                <a class="recent-work" style="background-image:url(@i)">
+                                    <span class="btn btn-o-white" data-toggle="modal" data-target="#CurrentPicture" data-imgsrcaddress=@i>查看</span>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                }
+            }
+        </section>
+
+
+        @Html.Partial("~/Views/Partials/ModalComponent.cshtml");
+
+    </div>
+</div>
