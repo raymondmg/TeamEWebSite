@@ -1,0 +1,51 @@
+﻿@{
+    string user = "欢迎！";
+    if(Session["UserName"]!=null)
+    {
+        user += Session["UserName"].ToString();
+    }
+    else
+    {
+        Response.Redirect("BackGround_Login");
+    }
+}
+<div class="templatemo-sidebar">
+    <header class="templatemo-site-header">
+        <div class="square"></div>
+        <h1>@user</h1>
+    </header>
+    <div class="profile-photo-container">
+        <img src="~/assets/images/Product/mTitle.jpg" alt="用户头像" class="img-responsive">
+        <div class="profile-photo-overlay"></div>
+    </div>
+    <!-- 搜索 -->
+    <form class="templatemo-search-form" role="search">
+        <div class="input-group">
+            <button type="submit" class="fa fa-search"></button>
+            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+        </div>
+    </form>
+    <div class="mobile-menu-icon">
+        <i class="fa fa-bars"></i>
+    </div>
+    <nav class="templatemo-left-nav">
+        <ul>
+            <li><a href="BackGround_Index"><i class="fa fa-home fa-fw"></i>后台管理首页</a></li>
+            <li><a href="BackGround_Article"><i class="fa fa-bar-chart fa-fw"></i>技术文章</a></li>
+            <li><a href="BackGround_Information"><i class="fa fa-database fa-fw"></i>资料库</a></li>
+            <li><a href="BackGround_GameProject"><i class="fa fa-map-marker fa-fw"></i>游戏项目</a></li>
+            <li><a href="BackGround_UserManager"><i class="fa fa-users fa-fw"></i>用户管理</a></li>
+            <li><a href="BackGround_DataManager"><i class="fa fa-sliders fa-fw"></i>数据分析</a></li>
+            <li><a href="BackGround_Login"><i class="fa fa-eject fa-fw"></i>切换用户</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script src="~/assets/js/jquery-2.1.3.min.js"></script> 
+<script>
+    /* 左侧跳转active类修改 */
+    $('.templatemo-left-nav ul li a').each(function () {
+        if ($($(this))[0].href == String(window.location))
+            $(this).addClass('active').attr('href', 'javascript:void(0);');
+    });
+</script>
