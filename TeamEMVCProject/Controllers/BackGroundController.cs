@@ -25,7 +25,29 @@ namespace TeamEMVCProject.Controllers
 
         DbHelper db = new DbHelper();
 
+        /// <summary>
+        /// 更新资料库树状结构
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult UpdateInformationTree()
+        {
+            //存储上传图片文件
+            HttpPostedFileBase file = Request.Files["jsonfile"];
+            if (file != null)
+            {
+                string filepath = Path.Combine(HttpContext.Server.MapPath("~/assets/Information/Json"), Path.GetFileName(file.FileName));
+                file.SaveAs(filepath);
+            }
 
+            return View("BackGround_Information");
+        }
+
+        /// <summary>
+        /// 添加最新作品
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AddGameProduct(LastProductedModel model)
         {
