@@ -1,22 +1,37 @@
-﻿@{
+﻿@model TeamEMVCProject.Models.LastProductedModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     Session["Index"] = "0";
     
-    var RowMaxColumn = 3;
-    var RowMax = 21 / RowMaxColumn;
 
-    Dictionary<int, List<string>> PicDisplay = new Dictionary<int, List<string>>();
+    MVCEF.Models.DbHelper db = new MVCEF.Models.DbHelper();
 
-    for (int i = 1; i <= RowMax;i++ )
+    //最近作品列表信息
+    Array lastProducts = db.LastProductedModule.ToArray();
+    const int MAX_ROW = 3;
+    int temCouter = 1;
+    int currentCounter = 1;
+    List<TeamEMVCProject.Models.LastProductedModel> RowTempSrc = new List<TeamEMVCProject.Models.LastProductedModel>();
+    Dictionary<int, List<TeamEMVCProject.Models.LastProductedModel>> PicDisplay = new Dictionary<int, List<TeamEMVCProject.Models.LastProductedModel>>();
+
+    Array.Reverse(lastProducts);
+    foreach (TeamEMVCProject.Models.LastProductedModel lp in lastProducts)
     {
-        List<string> RowpicSrc = new List<string>();
+        temCouter = temCouter % (MAX_ROW + 1);
+        if (temCouter == 0) { RowTempSrc = new List<TeamEMVCProject.Models.LastProductedModel>(); temCouter++; }
 
-        for (int j = i * RowMaxColumn-2; j <= i * RowMaxColumn; j++)
+        if (temCouter < MAX_ROW)
         {
-            RowpicSrc.Add("../assets/images/Product/pro" + j.ToString() + ".jpg");
+            RowTempSrc.Add(lp);
+        } 
+        else if (temCouter == MAX_ROW)
+        {
+            RowTempSrc.Add(lp);
+            PicDisplay.Add(currentCounter, RowTempSrc);
+            currentCounter++;
         }
-        PicDisplay.Add(i, RowpicSrc);
+        temCouter++;
     } 
 }
 
@@ -45,9 +60,10 @@
 
                                     @foreach (var i in item.Value)
                                     {
+                                        string src = "../" + i.ProductImgSrc;
                                         <div class="col-sm-4">
-                                            <a class="recent-work" style="background-image:url(@i)">
-                                                <span class="btn btn-o-white" data-toggle="modal" data-target="#CurrentPicture" data-imgsrcaddress=@i data-titleinfo="case">查看</span>
+                                            <a class="recent-work" style="background-image:url(@src)">
+                                                <span class="btn btn-o-white" data-toggle="modal" data-target="#CurrentPicture" data-imgsrcaddress=@src data-titleinfo=@i.ProductName>查看</span>
                                             </a>
                                         </div>
                                     }

@@ -9,8 +9,9 @@
     int currentCounter = 1;
     List<TeamEMVCProject.Models.LastProductedModel> RowTempSrc = new List<TeamEMVCProject.Models.LastProductedModel>();
     Dictionary<int, List<TeamEMVCProject.Models.LastProductedModel>> PicDisplay = new Dictionary<int, List<TeamEMVCProject.Models.LastProductedModel>>();
-    
-    
+
+
+    Array.Reverse(lastProducts);
     foreach (TeamEMVCProject.Models.LastProductedModel lp in lastProducts)
     {
         temCouter = temCouter % (MAX_ROW+1);
@@ -27,6 +28,11 @@
             currentCounter++;
         }
         temCouter++;
+        
+        if(currentCounter>2)
+        {
+            break;
+        }
     }   
 }
 

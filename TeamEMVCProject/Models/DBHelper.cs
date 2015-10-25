@@ -25,6 +25,7 @@ namespace MVCEF.Models
         public DbSet<LoginModel> LoginModule { get; set; }
         public DbSet<RegisterModel> RegisterModule { get; set; }
         public DbSet<LastProductedModel> LastProductedModule { get; set; }
+        public DbSet<ArticleShare> ArticleShareModule { get; set; }
     }
     internal sealed class ReportingDbMigrationsConfiguration : DbMigrationsConfiguration<DbHelper>
     {

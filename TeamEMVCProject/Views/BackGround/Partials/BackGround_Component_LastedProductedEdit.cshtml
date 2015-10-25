@@ -1,22 +1,8 @@
-﻿@model TeamEMVCProject.Models.LoginModel
-<!-- 图片弹出层 -->
-<div class="modal fade" id="CurrentPicture" tabindex="-1" role="dialog" aria-labelledby="Title">
+﻿@model TeamEMVCProject.Models.LastProductedModel
+@*近期作品修改弹出层*@
+<div class="modal fade" id="ProductEdit" tabindex="-1" role="dialog" aria-labelledby="Title">
     <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="Title">作品名称：</h4>
-            </div>
-            <div class="modal-body">
-                <img class="img-thumbnail" />
-            </div>
-        </div>
-    </div>
-</div>
-@*用户账号修改弹出层*@
-<div class="modal fade" id="UserAccountEdit" tabindex="-1" role="dialog" aria-labelledby="Title">
-    <div class="modal-dialog modal-lg" role="document">
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("EditGameProject","BackGround"))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
@@ -24,26 +10,30 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="Title">用户Id：</h4>
+                        <h4 class="modal-title" id="Title">作品Id：</h4>
 
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
                             <label class="control-label">编号ID：</label>
-                            @Html.TextBoxFor(m => m.uid, new { @id = "uid", @class = "form-control readonly", @placeholder = "ID" })
+                            @Html.TextBoxFor(m => m.id, new { @id = "proid", @class = "form-control readonly", @placeholder = "ID" })
                         </div>
                         <div class="form-group">
-                            <label for="username" class="control-label">用户名：</label>
-                            @Html.TextBoxFor(m => m.UserName, new { @id = "username", @class = "form-control", @placeholder = "请输入修改后的账号" })
+                            <label for="proname" class="control-label">作品名称：</label>
+                            @Html.TextBoxFor(m => m.ProductName, new { @id = "proname", @class = "form-control", @placeholder = "请输入修改后的作品名称" })
                         </div>
                         <div class="form-group">
-                            <label for="password" class="control-label">密码：</label>
-                            @Html.TextBoxFor(m => m.PassWord, new { @id = "password", @class = "form-control", @placeholder = "请输入修改后的密码" })
+                            <label for="prodes" class="control-label">作品简介：</label>
+                            @Html.TextBoxFor(m => m.ProductDescribe, new { @id = "prodes", @class = "form-control", @placeholder = "请输入修改后的简介" })
+                        </div>
+                        <div class="form-group">
+                            <label for="prosrc" class="control-label">作品链接地址：</label>
+                            @Html.TextBoxFor(m => m.ProductImgSrc, new { @id = "prosrc", @class = "form-control", @placeholder = "请输入修改后的图片链接" })
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="submit" class="btn btn-primary">保存修改</button>
+                        <button type="submit" class="btn btn-primary">再次发布作品</button>
                     </div>
                 </div>
             </fieldset>
@@ -56,7 +46,7 @@
 @*提示删除信息弹出层*@
 <div class="modal fade" id="Warning" tabindex="-1" role="dialog" aria-labelledby="Title">
     <div class="modal-dialog modal-lg" role="document">
-        @using (Html.BeginForm("DeleteLoginModule", "BackGround"))
+        @using (Html.BeginForm("DeleteLastProductedModule", "BackGround"))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
@@ -64,12 +54,12 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" >提示信息：</h4>
+                        <h4 class="modal-title">提示信息：</h4>
 
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input class="control-label" id="WarningInfo" readonly/>
+                            <input class="control-label" id="WarningInfo" readonly />
                         </div>
                     </div>
                     <div class="modal-footer">
