@@ -31,7 +31,7 @@
 	$drawerRight = $('#drawer-right');
 
 	///////////////////////////////
-	// Set Home Slideshow Height
+	// 抬头高度
 	///////////////////////////////
 
 	function setHomeBannerHeight() {
@@ -40,7 +40,7 @@
 	}
 
 	///////////////////////////////
-	// Center Home Slideshow Text
+	// 主页文字信息
 	///////////////////////////////
 
 	function centerHomeBannerText() {
@@ -53,24 +53,23 @@
 
 
 	///////////////////////////////
-	// SlideNav
+	// 右侧导航
 	///////////////////////////////
 
-	function setSlideNav(){
-		jQuery(".toggleDrawer").click(function(e){
-			//alert($wrapper.css('marginRight'));
-			e.preventDefault();
+	function setSlideNav() {
+	    jQuery(".toggleDrawer").click(function(e) {
+	        //alert($wrapper.css('marginRight'));
+	        e.preventDefault();
 
-			if($wrapper.css('marginLeft')=='0px'){
-				$drawerRight.animate({marginRight : 0},200);
-				$wrapper.animate({marginLeft : -300},200);
-			}
-			else{
-				$drawerRight.animate({marginRight : -300},200);
-				$wrapper.animate({marginLeft : 0},200);
-			}
-			
-		})
+	        if ($wrapper.css('marginLeft') == '0px') {
+	            $drawerRight.animate({ marginRight: 0 }, 200);
+	            $wrapper.animate({ marginLeft: -300 }, 200);
+	        } else {
+	            $drawerRight.animate({ marginRight: -300 }, 200);
+	            $wrapper.animate({ marginLeft: 0 }, 200);
+	        }
+
+	    });
 	}
 
 	function setHeaderBackground() {		
@@ -91,7 +90,7 @@
     // 弹出层
     ///////////////////////////////
 	function setModalImgSrc() {
-	    jQuery('#CurrentPicture').on('show.bs.modal', function (event) {
+	    jQuery('#CurrentPicture').on('show.bs.modal', function(event) {
 	        // 触发弹出层的物体
 	        var button = jQuery(event.relatedTarget);
 	        //获取用户自定义图片信息
@@ -104,18 +103,17 @@
 	            modal.find('.modal-title').text("ProductName:" + titleInfo);
 	        else
 	            modal.find('.modal-title').text("NoName");
-	    })
+	    });
 
 	}
 
     ///////////////////////////////
     //轮播参数设置
     ///////////////////////////////
-	function setCarousel()
-	{
+	function setCarousel() {
 	    jQuery('.carousel').carousel({
 	        interval: 2000
-	    })
+	    });
 	}
 
 

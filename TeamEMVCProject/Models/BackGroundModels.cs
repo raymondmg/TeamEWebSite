@@ -12,25 +12,24 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-///后台模块
 namespace TeamEMVCProject.Models
 {
     /// <summary>
     /// 登录模块
     /// </summary>
     [Table("T_UserInfo", Schema = "dbo")]//关联数据表
-    public class LoginModel
+    public class UserModel
     {
         [Key]
-        public int uid { get; set; }
+        public int Uid { get; set; }
 
         //用户名
-        [MaxLength(10), Required(ErrorMessage = "用户名不能为空")]
-        [Column(TypeName = "nvarchar")]
+        [Required]
+        [Display(Name = "用户名称")]
         public string UserName { get; set; }
         //密码
-        [MaxLength(10), Required(ErrorMessage = "密码不能为空")]
-        [Column(TypeName = "nvarchar")]
+        [Required]
+        [Display(Name = "用户密码")]
         public string PassWord { get; set; }
     }
 

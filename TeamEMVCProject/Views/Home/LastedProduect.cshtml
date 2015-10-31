@@ -1,11 +1,12 @@
-﻿@model TeamEMVCProject.Models.LastProductedModel
+﻿@using TeamEMVCProject.Models
+@model TeamEMVCProject.Models.LastProductedModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     Session["Index"] = "0";
     
 
-    MVCEF.Models.DbHelper db = new MVCEF.Models.DbHelper();
+    DbHelper db = new DbHelper();
 
     //最近作品列表信息
     Array lastProducts = db.LastProductedModule.ToArray();

@@ -1,17 +1,13 @@
-﻿@model TeamEMVCProject.Models.LoginModel
+﻿@using TeamEMVCProject.Models
+@model TeamEMVCProject.Models.UserModel
 @{
     Layout = "~/Views/Shared/_BackGroundLayout.cshtml";
 
-    MVCEF.Models.DbHelper db = new MVCEF.Models.DbHelper();
+    DbHelper db = new DbHelper();
     Array user= db.LoginModule.ToArray();
 
-    Dictionary<int, TeamEMVCProject.Models.LoginModel> userInfos = new Dictionary<int, TeamEMVCProject.Models.LoginModel>();
     int count=1;
-    foreach (TeamEMVCProject.Models.LoginModel item in user)
-	{
-        userInfos.Add(count++, item);
-	}
-   
+    Dictionary<int, TeamEMVCProject.Models.UserModel> userInfos = user.Cast<UserModel>().ToDictionary(item => count++);
 }
 
 
@@ -37,11 +33,11 @@
                     {
                         <tr>
                             <td>@u.Key</td>
-                            <td>@u.Value.uid</td>
+                            <td>@u.Value.Uid</td>
                             <td>@u.Value.UserName</td>
                             <td>@u.Value.PassWord</td>
-                            <td><a class="templatemo-edit-btn btn" data-toggle="modal" data-target="#UserAccountEdit" data-uid=@u.Value.uid data-username=@u.Value.UserName data-password=@u.Value.PassWord>编辑</a></td>
-                            <td><a class="templatemo-edit-btn btn" data-toggle="modal" data-target="#Warning" data-warninfo=@u.Value.uid>删除</a></td>
+                            <td><a class="templatemo-edit-btn btn" data-toggle="modal" data-target="#UserAccountEdit" data-uid=@u.Value.Uid data-username=@u.Value.UserName data-password=@u.Value.PassWord>编辑</a></td>
+                            <td><a class="templatemo-edit-btn btn" data-toggle="modal" data-target="#Warning" data-warninfo=@u.Value.Uid>删除</a></td>
                         </tr>
                     }
                 }    

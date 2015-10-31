@@ -4,15 +4,11 @@
 //    IDE：VS2013
 //    2015.10.16  Created by RaymondMG  
 //---------------------------------------------------------------------------------------------------------------------
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using TeamEMVCProject.Models;
 
-namespace MVCEF.Models
+namespace TeamEMVCProject.Models
 {
     public class DbHelper : DbContext
     {
@@ -20,9 +16,9 @@ namespace MVCEF.Models
             : base("strConn")
         {
             //自动创建表，如果Entity有改到就更新到表结构
-            Database.SetInitializer<DbHelper>(new MigrateDatabaseToLatestVersion<DbHelper, ReportingDbMigrationsConfiguration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DbHelper, ReportingDbMigrationsConfiguration>());
         }
-        public DbSet<LoginModel> LoginModule { get; set; }
+        public DbSet<UserModel> LoginModule { get; set; }
         public DbSet<RegisterModel> RegisterModule { get; set; }
         public DbSet<LastProductedModel> LastProductedModule { get; set; }
         public DbSet<ArticleShare> ArticleShareModule { get; set; }

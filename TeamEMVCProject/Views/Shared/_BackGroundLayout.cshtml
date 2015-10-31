@@ -11,7 +11,7 @@
     <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/assets/css/templatemo-style.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="~/assets/css/ChatPanel.css" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,27 +22,59 @@
 </head>
 <body>
 
-    <div class="templatemo-flex-row">     
-        <!-- LeftMenu -->
-        @Html.Partial("~/Views/BackGround/Partials/BackGround_Component_LeftSilderBar.cshtml")
-        <!-- Main content -->
-        <div class="templatemo-content col-1 light-gray-bg">
-            <!--Nav -->
-            @Html.Partial("~/Views/BackGround/Partials/BackGround_Component_RightNav.cshtml")
-            
-            <!-- Main info -->
-            <div class="templatemo-content-container">
-                @RenderBody()
-                <footer class="text-right">
-                    <p>
-                        Copyright &copy; 2015 TeamE
-                        | Developed by <a href="#" target="_parent">Raymond</a>
-                    </p>
-                </footer>
-            </div>
+
+<div id="BackGroundWapper" class="templatemo-flex-row">
+
+    <!-- LeftMenu -->
+    @Html.Partial("~/Views/BackGround/Partials/BackGround_Component_LeftSilderBar.cshtml")
+    <!-- Main content -->
+    <div class="templatemo-content col-1 light-gray-bg">
+        <!--Nav -->
+        @Html.Partial("~/Views/BackGround/Partials/BackGround_Component_RightNav.cshtml")
+
+        <!-- Main info -->
+        <div class="templatemo-content-container">
+            @RenderBody()
+            <footer class="text-right">
+                <p>
+                    Copyright &copy; 2015 TeamE
+                    | Developed by <a href="#" target="_parent">Raymond</a>
+                </p>
+            </footer>
         </div>
     </div>
+</div>
     <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery-2.1.3.min.js"></script>
+    <script src="../assets/js/is.min.js"></script>
+    <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+    <script src="../assets/js/team.chat.js"></script>
+    <script>
+        chat._init();
+
+        $drawerRight = $('#drawer-right');
+        $wrapper = $('#BackGroundWapper');
+        setSlideNav();
+        ///////////////////////////////
+        // 右侧导航
+        ///////////////////////////////
+
+        function setSlideNav() {
+            jQuery("#ChatPanel").click(function (e) {
+                //alert($wrapper.css('marginRight'));
+                e.preventDefault();
+
+                if ($wrapper.css('marginLeft') === '0px') {
+                    $drawerRight.animate({ marginRight: 0 }, 200);
+                    $wrapper.animate({ marginLeft: -300 }, 200);
+                } else {
+                    $drawerRight.animate({ marginRight: -300 }, 200);
+                    $wrapper.animate({ marginLeft: 0 }, 200);
+                }
+
+            });
+        }
+    </script>
 </body>
 </html>
 

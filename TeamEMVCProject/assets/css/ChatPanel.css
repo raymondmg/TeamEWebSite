@@ -1,0 +1,423 @@
+﻿/*聊天面板*/
+#drawer-right {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-right: -300px;
+    width: 300px;
+    padding: 20px;
+    z-index: 999;
+}
+
+
+#wpp_ui_chatpanel {
+    margin-top:61px;
+    height:100%; 
+    width:290px;
+    float:right;
+    right:0px;
+    background-color:white;
+}
+
+#wpp_ui_chatbox{
+	width:100%;
+	background:#fff;
+	border-radius:6px;
+	overflow:hidden;
+	height:100%;
+	position:absolute;
+	top:0px;
+	margin-left:0px;
+    border: 2px solid #5D9CEC;
+}
+
+#wpp_ui_friendslist{
+	position:absolute;
+	top:0;
+	left:0;
+	bottom:0;
+	width:290px;
+	height:100%;
+}
+#wpp_ui_topmenu{
+	top:0;
+	height:69px;
+	width:290px;
+	border-bottom:1px solid #d8dfe3;	
+}
+#wpp_ui_topmenu span{
+	float:left;	
+	width: 96px;
+    height: 70px;
+    background: url("../images/ChatPanel/top-menu.png") -3px -46px no-repeat;
+}
+
+/*TopMenu*/
+#wpp_ui_topmenu span.friends{margin-bottom:-1px;}
+#wpp_ui_topmenu span.friends:hover{margin-bottom:-1px;cursor:pointer;}
+#wpp_ui_topmenu span.friendsActive{margin-bottom:-1px;background-position:-3px -118px;}
+
+#wpp_ui_topmenu span.chatsActive{background-position:-95px -118px;}
+#wpp_ui_topmenu span.chats{background-position:-95px 24px; cursor:pointer;}
+#wpp_ui_topmenu span.chats:hover{background-position:-95px -46px; cursor:pointer;}	/*-46 hover -118 focus*/
+
+#wpp_ui_topmenu span.history{background-position:-190px 24px; cursor:pointer;}
+#wpp_ui_topmenu span.history:hover{background-position:-190px -47px; cursor:pointer;}
+
+
+/*FriendList*/
+.friend{
+	height:70px;
+	border-bottom:1px solid #e7ebee;		
+	position:relative;
+}
+.friend:hover{
+	background:#f1f4f6;
+	cursor:pointer;
+}
+.friend img{
+	width:40px;
+	border-radius:50%;
+	margin:15px;
+	float:left;
+}
+.floatingImg{
+	width:40px;
+	border-radius:50%;
+	position:absolute;
+	top:0;
+	left:12px;
+	border:3px solid #fff;
+}
+.friend p{
+	padding:15px 0 0 0;			
+	float:left;
+	width:220px;
+}
+.friend p strong{
+  font-weight:600;
+  font-size:15px;
+	color:#597a96;  
+
+}
+.friend p span{
+	font-size:13px;
+	font-weight:400;
+	color:#aab8c2;
+}
+.friend .status{
+	background:#26c281;
+	border-radius:50%;	
+	width:9px;
+	height:9px;
+	position:absolute;
+	top:31px;
+	right:17px;
+}
+.friend .status.away{background:#ffce54;}
+.friend .status.inactive{background:#eaeef0;}
+
+#wpp_ui_userChatPanel {
+  opacity:0;
+}
+
+#wpp_ui_userChatPanel.animate {
+  opacity:1;
+}
+
+
+#wpp_ui_chat-messages{
+	margin-top:30px;
+	width:290px;
+    height:750px;
+    bottom:10px;
+	margin-bottom:61px;
+	overflow-y:hidden;	
+	overflow-x:hidden;
+	padding-right: 20px;
+	-webkit-transition: all 200ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
+	   -moz-transition: all 200ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
+	    -ms-transition: all 200ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
+	     -o-transition: all 200ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
+	        transition: all 200ms cubic-bezier(0.000, 0.995, 0.990, 1.000);
+}
+
+#wpp_ui_chat-messages.animate {
+    opacity:1;
+    margin-top:0;
+}
+
+#wpp_ui_chat-messages label{
+	color:white;
+	font-weight:600;
+	font-size:12px;
+	text-align:center;
+	margin:15px 0;
+	width:290px;
+	display:block;	
+}
+
+#wpp_ui_chat-messages label span{
+	background-color:#d8dfe3;	
+}
+
+
+#wpp_ui_chat-messages div.message{
+	padding:0 0 30px 58px;
+	clear:both;
+	margin-bottom:45px;
+}
+#wpp_ui_chat-messages div.message.right{
+	  padding: 0 58px 30px 0;
+	  margin-right: -19px;
+	  margin-left: 19px;
+}
+
+/*说话人头像（左侧）*/
+#wpp_ui_chat-messages .message img{
+	  float: left;
+	  margin-left: -38px;
+	  border-radius: 50%;
+	  width: 30px;
+	  margin-top: 12px;
+}
+/*鼠标悬浮头像-可跳转与该人对话*/
+#wpp_ui_chat-messages .message img:hover{
+
+      box-shadow: 3px 3px 15px 3px #9edeff;
+	  cursor:pointer;
+}
+#wpp_ui_chat-messages div.message.right img{
+	float: right;	
+    margin-left: 0;
+	margin-right: -38px;	
+}
+
+#wpp_ui_chat-messages .message.right img:hover{	  
+      box-shadow: 3px 3px 15px 3px #d4f624;
+      cursor:default;
+}
+.message .bubble{	
+	background:#f0f4f7;
+	font-size:13px;
+	font-weight:600;
+	padding:12px 13px;
+	border-radius:5px 5px 5px 0px;
+	color:#8495a3;
+	position:relative;
+	float:left;
+    max-width:190px;
+    word-wrap:break-word;
+    margin-bottom:10px;
+}
+#wpp_ui_chat-messages div.message.right .bubble{
+	float:right;
+	border-radius:5px 5px 0px 5px ;
+    background:#ffce54;
+    max-width:190px;
+    word-wrap:break-word;
+    margin-bottom:10px;
+}
+.bubble .corner{
+	background:url("../images/ChatPanel/bubble-corner.png") 0 0 no-repeat;
+	position:absolute;
+	width:7px;
+	height:7px;
+	left:-5px;
+	bottom:0;
+}
+div.message.right .corner{
+	background:url("../images/ChatPanel/bubble-cornerR.png") 0 0 no-repeat;
+	left:auto;
+	right:-5px;
+}
+.bubble span{
+	  color: #aab8c2;
+	  font-size: 11px;
+	  position: absolute;
+	  right: 0;
+	  bottom: -22px;
+}
+#wpp_ui_sendmessage{
+	height:70px;
+	border-top:1px solid #e7ebee;
+    border-bottom:1px solid #e7ebee;	
+	position:absolute;
+	bottom:0;
+	right:0px;
+	width:290px;
+	background:#fff;
+	padding-bottom:60px;
+}
+#wpp_ui_sendmessage input{
+	margin:21px 0 0 21px;
+	padding:0;
+	font-size:14px;
+	font-family:"Open Sans", sans-serif; 
+	color:#aab8c2;
+    border:1px solid #7A6F6F;  
+    border:1px solid #7A6F6F \9;/*IE*/  
+    width:200px;  
+    height:20px;/*非IE高度*/  
+    height:20px \9;/*IE高度*/  
+    padding-left:5px; /*all*/  
+    line-height:20px \9;/*IE*/  
+    -moz-border-radius:3px;/*Firefox*/  
+    -webkit-border-radius:3px;/*Safari和Chrome*/  
+    border-radius:3px;/*IE9+*/  
+    background-color:white;  
+    outline:none;  
+}
+#wpp_ui_sendmessage input:focus{/*IE8+*/  
+    border-color:#78BAED;  
+    outline:1px solid #78BAED;/*chrome*/  
+}
+
+
+#wpp_ui_sendmessage input:focus{
+	 outline: 0;
+}
+
+#wpp_ui_sendmessage button{
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #e9e9e9));
+	background:-moz-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:-webkit-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:-o-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:-ms-linear-gradient(top, #f9f9f9 5%, #e9e9e9 100%);
+	background:linear-gradient(to bottom, #f9f9f9 5%, #e9e9e9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#e9e9e9',GradientType=0);
+	background-color:#f9f9f9;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:3px 9px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+  
+}
+#wpp_ui_sendmessage button:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e9e9e9), color-stop(1, #f9f9f9));
+	background:-moz-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:-webkit-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:-o-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:-ms-linear-gradient(top, #e9e9e9 5%, #f9f9f9 100%);
+	background:linear-gradient(to bottom, #e9e9e9 5%, #f9f9f9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#e9e9e9', endColorstr='#f9f9f9',GradientType=0);
+	background-color:#e9e9e9;
+}
+#wpp_ui_sendmessage button:active {
+	position:relative;
+	top:1px;
+}
+
+#wpp_ui_sendmessage button:hover{
+	cursor:pointer;
+}
+#wpp_ui_sendmessage button:focus{
+	 outline: 0;	 
+}
+/*分享按钮层*/
+#wpp_ui_ShareDiv {
+    float:right;
+}
+
+#wpp_ui_InpSndDiv {
+    margin-bottom:5px;
+}
+
+#wpp_ui_close{
+	position:absolute;
+	top: 8px;	
+	opacity:0.8;
+ 	right: 10px;
+	width:20px;
+	height:20px;
+	cursor:pointer;
+}
+#wpp_ui_close:hover{
+	opacity:1;
+}
+.cx, .cy{
+	background:#fff;
+	position:absolute;
+	width:0px;
+	top:15px;
+	right:15px;
+	height:3px;
+	-webkit-transition: all 250ms ease-in-out;
+	   -moz-transition: all 250ms ease-in-out;
+		-ms-transition: all 250ms ease-in-out;
+		 -o-transition: all 250ms ease-in-out;
+			transition: all 250ms ease-in-out;
+}
+.cx.s1, .cy.s1{	
+	right:0;	
+	width:20px;	
+	-webkit-transition: all 100ms ease-out;
+	   -moz-transition: all 100ms ease-out;
+		-ms-transition: all 100ms ease-out;
+		 -o-transition: all 100ms ease-out;
+			transition: all 100ms ease-out;
+}
+.cy.s2{	
+	-ms-transform: rotate(50deg); 
+	-webkit-transform: rotate(50deg); 
+	transform: rotate(50deg);		 
+	-webkit-transition: all 100ms ease-out;
+	   -moz-transition: all 100ms ease-out;
+		-ms-transition: all 100ms ease-out;
+		 -o-transition: all 100ms ease-out;
+			transition: all 100ms ease-out;
+}
+.cy.s3{	
+	-ms-transform: rotate(45deg); 
+	-webkit-transform: rotate(45deg); 
+	transform: rotate(45deg);		 
+	-webkit-transition: all 100ms ease-out;
+	   -moz-transition: all 100ms ease-out;
+		-ms-transition: all 100ms ease-out;
+		 -o-transition: all 100ms ease-out;
+			transition: all 100ms ease-out;
+}
+.cx.s1{	
+	right:0;	
+	width:20px;	
+	-webkit-transition: all 100ms ease-out;
+	   -moz-transition: all 100ms ease-out;
+		-ms-transition: all 100ms ease-out;
+		 -o-transition: all 100ms ease-out;
+			transition: all 100ms ease-out;
+}
+.cx.s2{	
+	-ms-transform: rotate(140deg); 
+	-webkit-transform: rotate(140deg); 
+	transform: rotate(140deg);		 
+	-webkit-transition: all 100ms ease-out;
+	   -moz-transition: all 100ms ease-out;
+		-ms-transition: all 100ease-out;
+		 -o-transition: all 100ms ease-out;
+			transition: all 100ms ease-out;
+}
+.cx.s3{	
+	-ms-transform: rotate(135deg); 
+	-webkit-transform: rotate(135deg); 
+	transform: rotate(135deg);		 
+	-webkit-transition: all 100ease-out;
+	   -moz-transition: all 100ms ease-out;
+		-ms-transition: all 100ms ease-out;
+		 -o-transition: all 100ms ease-out;
+			transition: all 100ms ease-out;
+}
+
+/*------------------------------------------------*/

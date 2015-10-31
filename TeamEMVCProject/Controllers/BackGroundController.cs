@@ -5,7 +5,6 @@
 //    2015.10.16  Created by RaymondMG  
 //---------------------------------------------------------------------------------------------------------------------
 using Microsoft.Web.WebPages.OAuth;
-using MVCEF.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,8 +21,7 @@ namespace TeamEMVCProject.Controllers
 {
     public class BackGroundController : Controller
     {
-
-        DbHelper db = new DbHelper();
+        readonly DbHelper db = new DbHelper();
 
         /// <summary>
         /// 更新资料库树状结构
@@ -89,7 +87,7 @@ namespace TeamEMVCProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                LastProductedModel nowEditModel = db.LastProductedModule.Where(it => it.id == model.id).FirstOrDefault();
+                LastProductedModel nowEditModel = db.LastProductedModule.FirstOrDefault(it => it.id == model.id);
                 nowEditModel.ProductName = model.ProductName;
                 nowEditModel.ProductPublishTime = DateTime.Now;
                 nowEditModel.ProductDescribe = model.ProductDescribe;
@@ -106,7 +104,7 @@ namespace TeamEMVCProject.Controllers
         [HttpPost]
         public ActionResult DeleteLastProductedModule(int deleteId)
         {
-            db.Entry(db.LastProductedModule.Where(it => it.id == deleteId).FirstOrDefault()).State = EntityState.Deleted;
+            db.Entry(db.LastProductedModule.FirstOrDefault(it => it.id == deleteId)).State = EntityState.Deleted;
             db.SaveChanges();
             return View("BackGround_GameProject");
         }
@@ -149,7 +147,7 @@ namespace TeamEMVCProject.Controllers
         [HttpPost]
         public ActionResult DeleteLoginModule(int deleteId)
         {
-            db.Entry(db.LoginModule.Where(it => it.uid == deleteId).FirstOrDefault()).State = EntityState.Deleted;
+            db.Entry(db.LoginModule.FirstOrDefault(it => it.Uid == deleteId)).State = EntityState.Deleted;
             db.SaveChanges();
             return View("BackGround_UserManager");
         }
@@ -159,11 +157,11 @@ namespace TeamEMVCProject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult BackGround_UserManager(LoginModel model)
+        public ActionResult BackGround_UserManager(UserModel model)
         {
             if (ModelState.IsValid )
             {
-               LoginModel nowEditModel = db.LoginModule.Where(it => it.uid == model.uid).FirstOrDefault();
+               UserModel nowEditModel = db.LoginModule.FirstOrDefault(it => it.Uid == model.Uid);
                nowEditModel.UserName = model.UserName;
                nowEditModel.PassWord = model.PassWord;              
                 db.SaveChanges();
@@ -201,13 +199,13 @@ namespace TeamEMVCProject.Controllers
                 try
                 {
                     string Message = string.Empty;
-                    if (db.LoginModule.Where(it => it.UserName == model.UserName).FirstOrDefault() != null)
+                    if (db.LoginModule.FirstOrDefault(it => it.UserName == model.UserName) != null)
                     {
                         Message = "用户名已经存在";
                         ViewBag.Msg = Message;
                         return View();
                     }
-                    LoginModel newUser = new LoginModel();
+                    UserModel newUser = new UserModel();
                     newUser.UserName = model.UserName;
                     newUser.PassWord = model.Password;
                     db.LoginModule.Add(newUser);
@@ -238,9 +236,9 @@ namespace TeamEMVCProject.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult BackGround_Login(LoginModel model)
+        public ActionResult BackGround_Login(UserModel model)
         {
-            if (ModelState.IsValid && db.LoginModule.Where(it => it.UserName == model.UserName && it.PassWord == model.PassWord).FirstOrDefault() != null)
+            if (ModelState.IsValid && db.LoginModule.FirstOrDefault(it => it.UserName == model.UserName && it.PassWord == model.PassWord) != null)
             {
                 Session["UserName"] = model.UserName;
                 return RedirectToAction("BackGround_Index", "BackGround");

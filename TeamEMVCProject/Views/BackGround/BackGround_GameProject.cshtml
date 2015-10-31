@@ -1,17 +1,14 @@
-﻿@model TeamEMVCProject.Models.LastProductedModel
+﻿@using TeamEMVCProject.Models
+@model LastProductedModel
 @{
     Layout = "~/Views/Shared/_BackGroundLayout.cshtml";
 
 
-    MVCEF.Models.DbHelper db = new MVCEF.Models.DbHelper();
+    DbHelper db = new DbHelper();
     Array lastproducted = db.LastProductedModule.ToArray();
 
-    Dictionary<int, TeamEMVCProject.Models.LastProductedModel> lastPorducts = new Dictionary<int, TeamEMVCProject.Models.LastProductedModel>();
     int count = 1;
-    foreach (TeamEMVCProject.Models.LastProductedModel item in lastproducted)
-    {
-        lastPorducts.Add(count++, item);
-    }
+    Dictionary<int, TeamEMVCProject.Models.LastProductedModel> lastPorducts = lastproducted.Cast<LastProductedModel>().ToDictionary(item => count++);
 }
 
 

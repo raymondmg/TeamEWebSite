@@ -4,26 +4,24 @@
 //    IDE：VS2013
 //    2015.10.16  Created by RaymondMG  
 //---------------------------------------------------------------------------------------------------------------------
-using MVCEF.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
-namespace TeamEWebSite.Controllers
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using TeamEMVCProject.Models;
+
+namespace TeamEMVCProject.Controllers
 {
     public class HomeController : Controller
     {
 
-      
         //
         // GET: /Home/
 
         public ActionResult Index()
         {
-            return View();
+
+                return View();
         }
 
         //public ActionResult edit(string id)

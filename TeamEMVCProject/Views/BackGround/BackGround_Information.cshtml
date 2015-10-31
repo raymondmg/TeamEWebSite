@@ -48,126 +48,134 @@
         </div>
     </div>
 
+
     @*JSON编辑器*@
 
-    <div class="row">
-        <div class="form-group text-right">
-            <div id="jsoneditor" style="height:500px;width:100%"></div>
-        </div>
-    </div>
-    <div class="row">
-
-        <div class="form-group text-left">
-        
-                @using (Html.BeginForm("UpdateInformationTree", "BackGround", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <div class="col-md-3">
-                        @Html.AntiForgeryToken()
-                        @Html.ValidationSummary(true)
-                        <fieldset>
-                            <div enctype="multipart/form-data">
-                                <input id="file-0a" class="file" name="jsonfile" type="file" multiple data-min-file-count="1">
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="col-md-3">
-                        <button id="uploadJson" type="submit" class="templatemo-blue-button">上传</button>
-                    </div>
-                }
-            </div>
-
-            <div class="col-md-6">
+    <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapsePanel" aria-expanded="false" aria-controls="collapsePanel">
+        资料库树状结构编辑器
+    </a>
+    <div class="collapse" id="collapsePanel">
+        <div class="well">
+            <div class="row">
                 <div class="form-group text-right">
-                    <button id="saveJson" type="button" class="templatemo-blue-button">保存</button>
+                    <div id="jsoneditor" style="height:500px;width:100%"></div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="form-group text-left">
+
+                    @using (Html.BeginForm("UpdateInformationTree", "BackGround", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="col-md-3">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <fieldset>
+                                <div enctype="multipart/form-data">
+                                    <input id="file-0a" class="file" name="jsonfile" type="file" multiple data-min-file-count="1">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-3">
+                            <button id="uploadJson" type="submit" class="templatemo-blue-button">上传</button>
+                        </div>
+                    }
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group text-right">
+                        <button id="saveJson" type="button" class="templatemo-blue-button">保存</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 
 
-    <!-- JS -->
-    <script src="~/assets/js/jquery-2.1.3.min.js"></script>
-    <script src="~/assets/js/bootstrap-treeview.min.js"></script>
-    <script src="~/assets/js/jsoneditor.min.js"></script>
-    <script src="~/assets/js/FileSaver.min.js"></script>
+        <!-- JS -->
+        <script src="~/assets/js/jquery-2.1.3.min.js"></script>
+        <script src="~/assets/js/bootstrap-treeview.min.js"></script>
+        <script src="~/assets/js/jsoneditor.min.js"></script>
+        <script src="~/assets/js/FileSaver.min.js"></script>
 
-    <script type="text/javascript">
-        //JSON编辑器
-        var editor;
-        $(function () {
+        <script type="text/javascript">
+            //JSON编辑器
+            var editor;
+            $(function () {
 
-            $.ajax({
-                type: "GET",
-                url: '/assets/Information/Json/Information.txt',
-                cache: false,
-                dataType: "json",
-                success: function (data) {
-                    initTree(data);
-                    var jsonDiv = document.getElementById('jsoneditor');
-                    initJsonEditor(jsonDiv, data);
-                }
-            });
-        });
-
-        //初始化树状结构
-        function initTree(iJson) {
-            //初始化选择
-            var initSelectableTree = function () {
-                return $('#treeview-selectable').treeview({
-                    data: iJson,
-
-                    //节点被选中事件触发
-                    onNodeSelected: function (event, node) {
-                        $('#selectable-output img').attr("src", node.imgSrc);
-                        $('#selectable-output a').attr("href", node.href);
-                        $('#selectable-output p').text(node.tags);
-                    },
-                    //节点取消选中事件触发
-                    onNodeUnselected: function (event, node) {
-                        $('#selectable-output img').attr("src", "");
+                $.ajax({
+                    type: "GET",
+                    url: '/assets/Information/Json/Information.txt',
+                    cache: false,
+                    dataType: "json",
+                    success: function (data) {
+                        initTree(data);
+                        var jsonDiv = document.getElementById('jsoneditor');
+                        initJsonEditor(jsonDiv, data);
                     }
                 });
-            };
-            var $selectableTree = initSelectableTree();
-
-            var findSelectableNodes = function () {
-                return $selectableTree.treeview('search', [$('#input-select-node').val(), { ignoreCase: false, exactMatch: false }]);
-            };
-            var selectableNodes = findSelectableNodes();
-
-            $('#chk-select-multi:checkbox').on('change', function () {
-                console.log('multi-select change');
-                $selectableTree = initSelectableTree();
-                selectableNodes = findSelectableNodes();
             });
 
+            //初始化树状结构
+            function initTree(iJson) {
+                //初始化选择
+                var initSelectableTree = function () {
+                    return $('#treeview-selectable').treeview({
+                        data: iJson,
 
-            $('#input-select-node').on('keyup', function (e) {
-                selectableNodes = findSelectableNodes();
-                $('.select-node').prop('disabled', !(selectableNodes.length >= 1));
-            });
-        }
+                        //节点被选中事件触发
+                        onNodeSelected: function (event, node) {
+                            $('#selectable-output img').attr("src", node.imgSrc);
+                            $('#selectable-output a').attr("href", node.href);
+                            $('#selectable-output p').text(node.tags);
+                        },
+                        //节点取消选中事件触发
+                        onNodeUnselected: function (event, node) {
+                            $('#selectable-output img').attr("src", "");
+                        }
+                    });
+                };
+                var $selectableTree = initSelectableTree();
 
-        //初始化json编辑器
-        function initJsonEditor(jsonDiv, json) {
-            var options = {
-                mode: 'tree',
-                modes: ['code', 'form', 'text', 'tree', 'view'],
-                error: function (err) {
-                    alert(err.toString());
-                }
-            };
+                var findSelectableNodes = function () {
+                    return $selectableTree.treeview('search', [$('#input-select-node').val(), { ignoreCase: false, exactMatch: false }]);
+                };
+                var selectableNodes = findSelectableNodes();
 
-            editor = new JSONEditor(jsonDiv, options, json);
-        }
-
-        //存储修改json文件
-        document.getElementById('saveJson').onclick = function () {
-            var blob = new Blob([editor.getText()], { type: 'application/json;charset=utf-8' });
-            saveAs(blob, 'Information.txt');
-        }
+                $('#chk-select-multi:checkbox').on('change', function () {
+                    console.log('multi-select change');
+                    $selectableTree = initSelectableTree();
+                    selectableNodes = findSelectableNodes();
+                });
 
 
-    </script>
+                $('#input-select-node').on('keyup', function (e) {
+                    selectableNodes = findSelectableNodes();
+                    $('.select-node').prop('disabled', !(selectableNodes.length >= 1));
+                });
+            }
+
+            //初始化json编辑器
+            function initJsonEditor(jsonDiv, json) {
+                var options = {
+                    mode: 'tree',
+                    modes: ['code', 'form', 'text', 'tree', 'view'],
+                    error: function (err) {
+                        alert(err.toString());
+                    }
+                };
+
+                editor = new JSONEditor(jsonDiv, options, json);
+            }
+
+            //存储修改json文件
+            document.getElementById('saveJson').onclick = function () {
+                var blob = new Blob([editor.getText()], { type: 'application/json;charset=utf-8' });
+                saveAs(blob, 'Information.txt');
+            }
+
+
+        </script>

@@ -88,7 +88,7 @@
 
 
     ///////////////////////////////
-    // ×÷Æ·½éÉÜ²ã
+    // µ¯³ö²ã
     ///////////////////////////////
 	function setModalImgSrc() {
 	    jQuery('#CurrentPicture').on('show.bs.modal', function (event) {
@@ -99,12 +99,13 @@
 	        var titleInfo = button.data('titleinfo');
 	        var modal = jQuery(this);
 	        modal.find('.img-thumbnail').attr("src", recipient);
-	
-	        if (titleInfo)          
+
+	        if (titleInfo)
 	            modal.find('.modal-title').text("ProductName:" + titleInfo);
 	        else
 	            modal.find('.modal-title').text("NoName");
 	    })
+
 	}
 
     ///////////////////////////////
