@@ -33,7 +33,10 @@
             currentCounter++;
         }
         temCouter++;
-    } 
+    }
+
+    if (!PicDisplay.ContainsKey(currentCounter))
+    { PicDisplay.Add(currentCounter, RowTempSrc); }
 }
 
  <div class="content-block" >

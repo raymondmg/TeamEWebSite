@@ -1,14 +1,39 @@
-/*
-TABLE OF CONTENT
-	1. Universal Styles
-	2. Left Column
-	3. Right Column
-	4. Charts & Maps
-	5. Login
-	6. Manage Users
-	7. Preferences
-	8. Media Queries
-----------------------------------------------*/
+
+/*////////////////////////////////////////////////////////////////////////
+// 新闻列表
+///////////////////////////////////////////////////////////////////////*/
+
+.glyphicon
+{
+    margin-right:4px !important; /*override*/
+}
+
+.pagination .glyphicon
+{
+    margin-right:0px !important; /*override*/
+}
+
+.pagination a
+{
+    color:#555;
+}
+
+.panel ul
+{
+    padding:0px;
+    margin:0px;
+    list-style:none;
+}
+
+.news-item
+{
+    padding:4px 4px;
+    margin:0px;
+    border-bottom:1px dotted #555; 
+}
+
+
+
 /* 1. Universal Styles
 ----------------------------------------------*/
 * {	font-family: 'Open Sans', sans-serif; }
@@ -639,5 +664,4 @@ input[type="radio"]:checked + label span {
 		padding-left: 11px;
 	}
 }
-
 

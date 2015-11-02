@@ -4,10 +4,7 @@
 //    IDE：VS2013
 //    2015.10.16  Created by RaymondMG  
 //---------------------------------------------------------------------------------------------------------------------
-using Microsoft.Web.WebPages.OAuth;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -15,7 +12,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using TeamEMVCProject.Models;
-using WebMatrix.WebData;
 
 namespace TeamEMVCProject.Controllers
 {
@@ -39,6 +35,44 @@ namespace TeamEMVCProject.Controllers
             }
 
             return View("BackGround_Information");
+        }
+
+
+
+        
+        //后台显示文章
+        // GET: /BackGround/BackGround_ArticleDetail
+        [AllowAnonymous]
+        public ActionResult BackGround_ArticleDetail()
+        {
+            return View();
+        }
+
+
+        /// <summary>
+        /// MarkDown编辑器发布文章
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult MarkDownArticlePublish(ArticleShare model)
+        {
+            if (model == null) return View("BackGround_Article");
+            var article = new ArticleShare
+            {
+                ArticleName = model.ArticleName ?? "null",
+                ArticleDescribe = model.ArticleDescribe ?? "null",
+                ArticleInfo = model.ArticleInfo ?? "null",
+                ArticlePublishTime = DateTime.Now,
+                ArticleImgSrc = "assets/images/LOGO.png"
+            };
+
+            db.ArticleShareModule.Add(article);
+            db.SaveChanges();
+
+            return View("BackGround_Article");
         }
 
         /// <summary>
@@ -248,7 +282,7 @@ namespace TeamEMVCProject.Controllers
             return View(model);
         }
 
-      
+
 
     }
 }

@@ -1,29 +1,48 @@
-﻿@using TeamEWebSite.App_Code;
+﻿@using TeamEMVCProject.Models
+@model TeamEMVCProject.Models.ArticleShare
 @{
     ViewBag.Title = "TeamShare";
     Layout = "~/Views/Shared/_Layout.cshtml";
     Session["Index"] = "0";
 
-    List<TeamShareInfo> artInfo = new List<TeamShareInfo>();
+    var db = new DbHelper();
+    //技术文章信息
+    Array articleInfo = db.ArticleShareModule.ToArray();
 
-    TeamShareInfo artFir = new TeamShareInfo("../assets/images/Product/1.jpg", "场景介绍", "游戏主体设计基于一个正六边形的房间（Main Room，以下简称MR）玩家经历引导剧情之后在MR的正中央地面A点处进入场景。MR中不相邻的边上各有一扇门，分别代表不同的主题（财富，权力，人性）连接了位于门后的三条支路（Route）。", "7 Sep, 2015");
-    TeamShareInfo artSec = new TeamShareInfo("../assets/images/Product/2.jpg", "Main Room（MR）设计", "MR是一座巨大的空旷房间，墙体主色调为白色，象征了对人生路上未知旅程的探索。三条支路（Route）分别是：财富、权力、人性。玩家在每一条支路中通过进入不同的门做出选择，不同的门通往各异的结局。", "7 Sep, 2015");
-    TeamShareInfo artThi = new TeamShareInfo("../assets/images/Product/3.jpg", "Route 1：Wealth（财富）", "财富线主要包含两个结局，即对物质财富的追求和对精神财富的追求。（其中精神财富分支又扩展出自然环境的财富和人文情感的财富。）玩家开始进入Route 1时，会有两位旁白鼓励其做出一种选择，在这条支路中旁白不会诱导玩家做出选择，而是对玩家的选择加以肯定。", "7 Sep, 2015");
+    const int maxRowSize = 3;
+    var temCouter = 1;
+    var currentCounter = 1;
+    var rowTempSrc = new List<TeamEMVCProject.Models.ArticleShare>();
+    var picDisplay = new Dictionary<int, List<TeamEMVCProject.Models.ArticleShare>>();
 
-    artInfo.Add(artFir);
-    artInfo.Add(artSec);
-    artInfo.Add(artThi);
+    Array.Reverse(articleInfo);
 
+    foreach (TeamEMVCProject.Models.ArticleShare item in articleInfo)
+    {
+        item.ArticleImgSrc = "../" + item.ArticleImgSrc;
+    }
+    
+    foreach (TeamEMVCProject.Models.ArticleShare lp in articleInfo)
+    {
+        temCouter = temCouter % (maxRowSize + 1);
+        if (temCouter == 0) { rowTempSrc = new List<TeamEMVCProject.Models.ArticleShare>(); temCouter++; }
 
-    List<TeamShareInfo> artInfo2 = new List<TeamShareInfo>();
+        if (temCouter < maxRowSize)
+        {
+            rowTempSrc.Add(lp);
+        }
+        else if (temCouter == maxRowSize)
+        {
+            rowTempSrc.Add(lp);
+            picDisplay.Add(currentCounter, rowTempSrc);
+            currentCounter++;
+        }
+        temCouter++;
+    }
 
-    TeamShareInfo artFir2 = new TeamShareInfo("../assets/images/Product/2-1.png", "Chapter11-1 怪物", "我们这一章节需要在场景中添加一个岛屿的场景作为范例。玩家将可以在整个岛上漫游，同时他也会遇到一些敌人，NPC可以在他遇到敌人之前给予他一定帮助和建议。", "7 Sep, 2015");
-    TeamShareInfo artSec2 = new TeamShareInfo("../assets/images/Product/2-2.png", "Chapter10 库存系统", "我们希望我们的玩家有能力去捡起一些物品在游戏世界之中，这一章，我们将会编写并设计整个背包系统提供给我们的玩家来存储物品。我们将会展示当按下I键的时候玩家可以收集到的物品。", "7 Sep, 2015");
-    TeamShareInfo artThi2 = new TeamShareInfo("../assets/images/Product/2-3.png", "Chapter12 魔法书", "实际上，魔法是将粒子系统和对区域的影响效果结合在一起的。区域中需要检查是否包含有actor。当一个actor进入这篇魔法区域中，那么这个actor受到区域的效果。", "7 Sep, 2015");
-
-    artInfo2.Add(artFir2);
-    artInfo2.Add(artSec2);
-    artInfo2.Add(artThi2);
+    if (!picDisplay.ContainsKey(currentCounter)) 
+    {picDisplay.Add(currentCounter, rowTempSrc);}
+    
 }
 
 <div class="content-block" id="blog" style="padding:100px 0px;">
@@ -32,24 +51,28 @@
             <h1>团队分享</h1>
             <p>Keep up with the latest happenings.</p>
         </header>
-        @{
-            <section class="block-body">
+
+        <section class="block-body">
+            @foreach (var item in picDisplay)
+            {
                 <div class="row">
 
-                    @foreach (var item in artInfo)
+                    @foreach (var i in item.Value)
                     {
-                        
-                        var hrefTemp="#"+item.ArticleTitle;
-                        <div class="col-sm-4 blog-post" style="height:693px;">
-                            <img src=@item.ImgSrc>
-                            <a href="#"><h2>@item.ArticleTitle</h2></a>
-                            <a class="btn btn-primary" role="button" data-toggle="collapse" href=@hrefTemp aria-expanded="false" aria-controls=@item.ArticleTitle>
-                                作品详情
-                            </a>
-                            <div class="collapse" id=@item.ArticleTitle>
-                                <div class="well">
-                                    <div class="date">@item.PublishDate</div>
-                                    <p>@item.ArticleContent</p>
+
+                        var hrefTemp = "#" + i.ArticleName;
+                        <div class="col-sm-4 blog-post" style="height: 693px;">
+                            <img src=@i.ArticleImgSrc>
+                            <a href="#">
+                                <h2>@i.ArticleName</h2>
+                        </a>
+                        <a class="btn btn-primary" role="button" data-toggle="collapse" href=@hrefTemp aria-expanded="false" aria-controls=@i.ArticleName>
+                            作品详情
+                        </a>
+                        <div class="collapse" id=@i.ArticleName>
+                            <div class="well">
+                                <div class="date">@i.ArticlePublishTime</div>
+                                    <p>@i.ArticleDescribe</p>
                                     <a href="~/assets/Information/PDF/Storyboard&Process.pdf" target="_blank">附件</a>
                                 </div>
                             </div>
@@ -57,33 +80,8 @@
                     }
 
                 </div>
+            }
+        </section>
 
-
-                <div class="row">
-
-                    @foreach (var item in artInfo2)
-                    {
-
-                        var hrefTemp = "#" + item.ArticleTitle;
-                        <div class="col-sm-4 blog-post" style="height:593px;">
-                            <img src=@item.ImgSrc>
-                            <a href="#"><h2>@item.ArticleTitle</h2></a>
-                            <a class="btn btn-primary" role="button" data-toggle="collapse" href=@hrefTemp aria-expanded="false" aria-controls=@item.ArticleTitle>
-                                作品详情
-                            </a>
-                            <div class="collapse" id=@item.ArticleTitle>
-                                <div class="well">
-                                    <div class="date">@item.PublishDate</div>
-                                    <p>@item.ArticleContent</p>
-                                    <a href="~/assets/Information/PDF/虚幻美术设计流程完整汉化版.pdf" target="_blank">附件</a>
-                                </div>
-                            </div>
-                        </div>
-                    }
-
-                </div>
-
-            </section>
-        }
     </div>
 </div>

@@ -2,13 +2,13 @@
 @using TeamEWebSite.App_Code;
 @model TeamEMVCProject.Models.ArticleShare
 @{
-    DbHelper db = new DbHelper();
+    var db = new DbHelper();
     //技术文章信息
-    Array ArticleInfo = db.ArticleShareModule.ToArray();
-    
-    List<TeamShareInfo> artInfo = (from ArticleShare article in ArticleInfo select new TeamShareInfo(article.ArticleImgSrc, article.ArticleName, article.ArticleDescribe, article.ArticlePublishTime.ToShortDateString())).ToList();
+    Array articleInfo = db.ArticleShareModule.ToArray();
 
-    
+    var tempCount = 0;
+    Array.Reverse(articleInfo);
+
 }
 
 <div class="content-block" id="blog">
@@ -19,23 +19,24 @@
             <p>Keep up with the latest happenings.</p>
         </header>
 
-    @{
         <section class="block-body">
             <div class="row">
 
-                @foreach (var item in artInfo)
+                @foreach (var item in articleInfo.Cast<ArticleShare>().TakeWhile(item => ++tempCount <= 3))
                 {
+                    item.ArticleImgSrc = "../" + item.ArticleImgSrc;
+                    var hrefSrc = "Home/Article?Article=" + item.id;
+
                     <div class="col-sm-4 blog-post" style="height:593px;">
-                        <img src=@item.ImgSrc>
-                        <a href="#"><h2>@item.ArticleTitle</h2></a>
-                        <div class="date">@item.PublishDate</div>
-                        <p>@item.ArticleContent</p>
-                        <a id="blogHref" href="">查看</a>
+                        <img src=@item.ArticleImgSrc alt="">
+                        <a href=@hrefSrc><h2>@item.ArticleName</h2></a>
+                        <div class="date">@item.ArticlePublishTime</div>
+                        <p>@item.ArticleDescribe</p>
+                        <a id="blogHref" href=@hrefSrc>查看</a>
                     </div>
                 }
-               
+
             </div>
         </section>
-    }     
     </div>
 </div>

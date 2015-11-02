@@ -197,3 +197,8 @@ F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\images\ChatPanel
 F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\images\ChatPanel\send.png
 F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\images\ChatPanel\timeline1.png
 F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\images\ChatPanel\top-menu.png
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\js\jquery.bootstrap.newsbox.min.js
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\css\bootstrap-markdown.min.css
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\js\bootstrap-markdown.js
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\js\markdown.js
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\js\to-markdown.js

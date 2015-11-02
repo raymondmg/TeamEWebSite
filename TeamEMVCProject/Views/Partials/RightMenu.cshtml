@@ -1,9 +1,12 @@
 ﻿@{
     var hrefSrc = "#wrapper";
-    
-    if(Session["Index"].ToString()=="0")
+
+    if (Session["Index"] != null)
     {
-        hrefSrc = "/";
+        if (Session["Index"].ToString() == "0")
+        {
+            hrefSrc = "/";
+        }
     }
 }
 

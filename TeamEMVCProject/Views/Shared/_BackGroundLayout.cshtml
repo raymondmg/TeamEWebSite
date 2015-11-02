@@ -47,20 +47,23 @@
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/jquery-2.1.3.min.js"></script>
     <script src="../assets/js/is.min.js"></script>
-    <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+    <script src="http://v3.jiathis.com/code_mini/jia.js"></script>
     <script src="../assets/js/team.chat.js"></script>
+    <script src="../assets/js/jquery.bootstrap.newsbox.min.js"></script>
     <script>
         chat._init();
 
         $drawerRight = $('#drawer-right');
         $wrapper = $('#BackGroundWapper');
         setSlideNav();
+        newsRoll();
+
         ///////////////////////////////
         // 右侧导航
         ///////////////////////////////
 
         function setSlideNav() {
-            jQuery("#ChatPanel").click(function (e) {
+            jQuery("#ChatPanel").click(function(e) {
                 //alert($wrapper.css('marginRight'));
                 e.preventDefault();
 
@@ -74,6 +77,24 @@
 
             });
         }
+
+        ///////////////////////////////
+        // 新闻滚动
+        ///////////////////////////////
+
+        function newsRoll() {
+            $("#newsList").bootstrapNews({
+                newsPerPage: 5,
+                autoplay: true,
+                pauseOnHover: true,
+                direction: 'up',
+                newsTickerInterval: 4000,
+                onToDo: function() {
+                 
+                }
+            });
+        }
+
     </script>
 </body>
 </html>
