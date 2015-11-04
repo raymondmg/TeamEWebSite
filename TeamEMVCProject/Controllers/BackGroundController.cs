@@ -17,7 +17,7 @@ namespace TeamEMVCProject.Controllers
 {
     public class BackGroundController : Controller
     {
-        readonly DbHelper db = new DbHelper();
+        readonly DbHelper _db = new DbHelper();
 
         /// <summary>
         /// 更新资料库树状结构
@@ -27,12 +27,10 @@ namespace TeamEMVCProject.Controllers
         public ActionResult UpdateInformationTree()
         {
             //存储上传图片文件
-            HttpPostedFileBase file = Request.Files["jsonfile"];
-            if (file != null)
-            {
-                string filepath = Path.Combine(HttpContext.Server.MapPath("~/assets/Information/Json"), Path.GetFileName(file.FileName));
-                file.SaveAs(filepath);
-            }
+            var file = Request.Files["jsonfile"];
+            if (file == null) return View("BackGround_Information");
+            var filepath = Path.Combine(HttpContext.Server.MapPath("~/assets/Information/Json"), Path.GetFileName(file.FileName));
+            file.SaveAs(filepath);
 
             return View("BackGround_Information");
         }
@@ -69,8 +67,8 @@ namespace TeamEMVCProject.Controllers
                 ArticleImgSrc = "assets/images/LOGO.png"
             };
 
-            db.ArticleShareModule.Add(article);
-            db.SaveChanges();
+            _db.ArticleShareModule.Add(article);
+            _db.SaveChanges();
 
             return View("BackGround_Article");
         }
@@ -83,12 +81,12 @@ namespace TeamEMVCProject.Controllers
         [HttpPost]
         public ActionResult AddGameProduct(LastProductedModel model)
         {
-            LastProductedModel newlastprod = new LastProductedModel();
+            var newlastprod = new LastProductedModel();
             //存储上传图片文件
-            HttpPostedFileBase file = Request.Files["pic"];
+            var file = Request.Files["pic"];
             if(file!=null)
             {
-                string filepath = Path.Combine(HttpContext.Server.MapPath("~/assets/images/Product"), Path.GetFileName(file.FileName));
+                var filepath = Path.Combine(HttpContext.Server.MapPath("~/assets/images/Product"), Path.GetFileName(file.FileName));
                 newlastprod.ProductImgSrc = "assets/images/Product/" + Path.GetFileName(file.FileName);
                 file.SaveAs(filepath);
             }
@@ -98,8 +96,8 @@ namespace TeamEMVCProject.Controllers
             newlastprod.ProductPublishTime = DateTime.Now;
 
 
-            db.LastProductedModule.Add(newlastprod);
-            db.SaveChanges();
+            _db.LastProductedModule.Add(newlastprod);
+            _db.SaveChanges();
 
             return View("BackGround_GameProject");
         }
@@ -119,15 +117,16 @@ namespace TeamEMVCProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditGameProject(LastProductedModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View("BackGround_GameProject");
+            var nowEditModel = _db.LastProductedModule.FirstOrDefault(it => it.id == model.id);
+            if (nowEditModel != null)
             {
-                LastProductedModel nowEditModel = db.LastProductedModule.FirstOrDefault(it => it.id == model.id);
                 nowEditModel.ProductName = model.ProductName;
                 nowEditModel.ProductPublishTime = DateTime.Now;
                 nowEditModel.ProductDescribe = model.ProductDescribe;
                 nowEditModel.ProductImgSrc = model.ProductImgSrc;
-                db.SaveChanges();
             }
+            _db.SaveChanges();
 
             return View("BackGround_GameProject");
         }
@@ -138,8 +137,8 @@ namespace TeamEMVCProject.Controllers
         [HttpPost]
         public ActionResult DeleteLastProductedModule(int deleteId)
         {
-            db.Entry(db.LastProductedModule.FirstOrDefault(it => it.id == deleteId)).State = EntityState.Deleted;
-            db.SaveChanges();
+            _db.Entry(_db.LastProductedModule.FirstOrDefault(it => it.id == deleteId)).State = EntityState.Deleted;
+            _db.SaveChanges();
             return View("BackGround_GameProject");
         }
 
@@ -181,8 +180,8 @@ namespace TeamEMVCProject.Controllers
         [HttpPost]
         public ActionResult DeleteLoginModule(int deleteId)
         {
-            db.Entry(db.LoginModule.FirstOrDefault(it => it.Uid == deleteId)).State = EntityState.Deleted;
-            db.SaveChanges();
+            _db.Entry(_db.LoginModule.FirstOrDefault(it => it.Uid == deleteId)).State = EntityState.Deleted;
+            _db.SaveChanges();
             return View("BackGround_UserManager");
         }
         
@@ -193,13 +192,14 @@ namespace TeamEMVCProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult BackGround_UserManager(UserModel model)
         {
-            if (ModelState.IsValid )
+            if (!ModelState.IsValid) return View(model);
+            var nowEditModel = _db.LoginModule.FirstOrDefault(it => it.Uid == model.Uid);
+            if (nowEditModel != null)
             {
-               UserModel nowEditModel = db.LoginModule.FirstOrDefault(it => it.Uid == model.Uid);
-               nowEditModel.UserName = model.UserName;
-               nowEditModel.PassWord = model.PassWord;              
-                db.SaveChanges();
+                nowEditModel.UserName = model.UserName;
+                nowEditModel.PassWord = model.PassWord;
             }
+            _db.SaveChanges();
 
             return View(model);
         }
@@ -227,31 +227,30 @@ namespace TeamEMVCProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult BackGround_Register(RegisterModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+            // 接收用户注册
+            try
             {
-                // 接收用户注册
-                try
+                if (_db.LoginModule.FirstOrDefault(it => it.UserName == model.UserName) != null)
                 {
-                    string Message = string.Empty;
-                    if (db.LoginModule.FirstOrDefault(it => it.UserName == model.UserName) != null)
-                    {
-                        Message = "用户名已经存在";
-                        ViewBag.Msg = Message;
-                        return View();
-                    }
-                    UserModel newUser = new UserModel();
-                    newUser.UserName = model.UserName;
-                    newUser.PassWord = model.Password;
-                    db.LoginModule.Add(newUser);
-                    db.SaveChanges();
+                    const string message = "用户名已经存在";
+                    ViewBag.Msg = message;
+                    return View();
+                }
+                var newUser = new UserModel
+                {
+                    UserName = model.UserName,
+                    PassWord = model.Password
+                };
+                _db.LoginModule.Add(newUser);
+                _db.SaveChanges();
 
-                    Session["UserName"] = model.UserName;
-                    return RedirectToAction("BackGround_Index", "BackGround");
-                }
-                catch (MembershipCreateUserException e)
-                {
+                Session["UserName"] = model.UserName;
+                return RedirectToAction("BackGround_Index", "BackGround");
+            }
+            catch (MembershipCreateUserException e)
+            {
                    
-                }
             }
 
             return View(model);
@@ -272,7 +271,7 @@ namespace TeamEMVCProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult BackGround_Login(UserModel model)
         {
-            if (ModelState.IsValid && db.LoginModule.FirstOrDefault(it => it.UserName == model.UserName && it.PassWord == model.PassWord) != null)
+            if (ModelState.IsValid && _db.LoginModule.FirstOrDefault(it => it.UserName == model.UserName && it.PassWord == model.PassWord) != null)
             {
                 Session["UserName"] = model.UserName;
                 return RedirectToAction("BackGround_Index", "BackGround");
@@ -282,7 +281,38 @@ namespace TeamEMVCProject.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 编辑文章
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditArticle(ArticleShare model)
+        {
+            //if (!ModelState.IsValid) return View("BackGround_Article");
+            var nowEditModel = _db.ArticleShareModule.FirstOrDefault(it => it.id == model.id);
+            //if (nowEditModel != null)
+            //{
+                nowEditModel.ArticleName = model.ArticleName;
+                nowEditModel.ArticlePublishTime = DateTime.Now;
+                nowEditModel.ArticleDescribe = model.ArticleDescribe;
+                nowEditModel.ArticleImgSrc = model.ArticleImgSrc;
+            //}
+            _db.SaveChanges();
 
-
+            return View("BackGround_Article");
+        }
+        /// <summary>
+        /// 删除文章
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult DeleteArticleModule(int deleteId)
+        {
+            _db.Entry(_db.ArticleShareModule.FirstOrDefault(it => it.id == deleteId)).State = EntityState.Deleted;
+            _db.SaveChanges();
+            return View("BackGround_Article");
+        }
     }
 }

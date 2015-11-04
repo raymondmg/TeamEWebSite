@@ -1,27 +1,32 @@
-﻿
-<div class="content-block" id="contact">
-    <div class="container text-center">
-        <header class="block-heading cleafix">
-            <h1>联系我们</h1>
-            <p>Contract Us</p>
-        </header>
-        <section class="block-body">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <form class="" role="form">
-                        <div class="form-group">
-                            <input type="email" class="form-control form-control-white" id="subject" placeholder="姓名" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control form-control-white" id="exampleInputEmail2" placeholder="邮箱" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control form-control-white" placeholder="留言" required></textarea>
-                        </div>
-                        <input type="submit" class="btn btn-o-white" value="Say Hello">
-                    </form>
+﻿@model TeamEMVCProject.Models.MailPostInfo
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="content-block" id="contact">
+        <div class="container text-center">
+            <header class="block-heading cleafix">
+                <h1>联系我们</h1>
+                <p>Contract Us</p>
+            </header>
+            <section class="block-body">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <form class="" role="form">
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.MailName, new { @id = "subject", @class = "form-control form-control-white", @type = "text", @placeholder = "姓名" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.MailEmail, new { @id = "email", @class = "form-control form-control-white", @type = "email", @placeholder = "邮箱" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextAreaFor(m => m.MailContent, new { @id = "content", @class = "form-control form-control-white",  @placeholder = "留言" })
+                            </div>
+                            <input type="submit" class="btn btn-o-white" value="你好！你好！">
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
-</div>
+}

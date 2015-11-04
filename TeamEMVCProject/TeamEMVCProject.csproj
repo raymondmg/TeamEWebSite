@@ -178,6 +178,7 @@
     <Compile Include="Models\BackGroundModels.cs" />
     <Compile Include="Models\DBHelper.cs" />
     <Compile Include="Models\DomainServices.cs" />
+    <Compile Include="Models\HomeModels.cs" />
     <Compile Include="Models\Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -715,6 +716,7 @@
     <Content Include="Views\BackGround\Partials\BackGround_Component_ChatPanel.cshtml" />
     <Content Include="Views\BackGround\BackGround_ArticleDetail.cshtml" />
     <Content Include="Views\Home\Article.cshtml" />
+    <Content Include="Views\BackGround\Partials\BackGround_Component_ArticleEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

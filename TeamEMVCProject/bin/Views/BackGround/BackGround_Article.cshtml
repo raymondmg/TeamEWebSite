@@ -133,7 +133,7 @@
                                                 <td>@u.Value.ArticleDescribe</td>
                                                 <td>@u.Value.ArticleImgSrc</td>
                                                 <td><a class="templatemo-edit-btn btn" data-toggle="modal" data-target="#ArticleInfoEdit" data-artinfo=@u.Value.ArticleInfo>打开文章内容编辑器</a></td>
-                                                <td><a class="templatemo-edit-btn btn" data-toggle="modal" data-target="#ArticleEdit" data-proid=@u.Value.id data-artname=@u.Value.ArticleName data-artpublish=@u.Value.ArticlePublishTime data-artdes=@u.Value.ArticleDescribe data-artimgsrc=@u.Value.ArticleImgSrc data-artinfo=@u.Value.ArticleInfo>编辑</a></td>
+                                                <td><a class="templatemo-edit-btn btn" data-toggle="modal" data-target="#ArticleEdit" data-artid=@u.Value.id data-artname=@u.Value.ArticleName data-artpublish=@u.Value.ArticlePublishTime data-artdes=@u.Value.ArticleDescribe data-artimgsrc=@u.Value.ArticleImgSrc data-artinfo=@u.Value.ArticleInfo>编辑</a></td>
                                                 <td><a class="templatemo-edit-btn btn" data-toggle="modal" data-target="#Warning" data-warninfo=@u.Value.id>删除</a></td>
                                             </tr>
                                         }
@@ -153,11 +153,16 @@
     </div>
 </div>
 
+@Html.Partial("~/Views/BackGround/Partials/BackGround_Component_ArticleEdit.cshtml");
+
+
+<!-- JS -->
+<script src="../assets/js/jquery-2.1.3.min.js"></script>
 <script src="../assets/js/bootstrap-markdown.js"></script>
 <script src="../assets/js/to-markdown.js"></script>
 <script src="../assets/js/markdown.js"></script>
 <script>
-    
+
     markDownArticle();
 
 
@@ -167,10 +172,54 @@
 
     function markDownArticle() {
         $("#articleEditor").markdown({
-
-            onChange: function (e) {
+            onChange: function(e) {
                 $("#hid").val(e.parseContent());
             }
         });
     }
+
+
+
+    jQuery('#ArticleEdit').on('show.bs.modal', function (event) {
+
+        // 触发弹出层的物体
+        var button = jQuery(event.relatedTarget);
+        //获取作品信息
+        var artid = button.data('artid');
+        var artname = button.data('artname');
+        var artdes = button.data('artdes');
+        var artimgsrc = button.data('artimgsrc');
+
+        var modal = jQuery(this);
+
+        if (artid) {
+            modal.find('.modal-title').text("ID:" + artid);
+
+            modal.find("#artid").val(artid);
+            modal.find("#artname").val(artname);
+            modal.find("#artdes").val(artdes);
+            modal.find("#artimgsrc").val(artimgsrc);
+            modal.find("#artid").attr("readonly", "readonly");
+        } else
+            modal.find('.modal-title').text("ID:None");
+
+    });
+
+    jQuery('#Warning').on('show.bs.modal', function (event) {
+
+        // 触发弹出层的物体
+        var button = jQuery(event.relatedTarget);
+        //获取删除用户信息
+        var warninfo = button.data('warninfo');
+
+        var modal = jQuery(this);
+
+        if (warninfo) {
+            modal.find("#WarningInfo").val(warninfo);
+            modal.find("#WarningInfo").attr("name", "deleteId");
+        }
+    });
 </script>
+
+
+
