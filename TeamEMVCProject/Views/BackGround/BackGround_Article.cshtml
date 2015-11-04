@@ -189,6 +189,7 @@
         var artname = button.data('artname');
         var artdes = button.data('artdes');
         var artimgsrc = button.data('artimgsrc');
+        var artinfo = button.data('artinfo');
 
         var modal = jQuery(this);
 
@@ -198,7 +199,8 @@
             modal.find("#artid").val(artid);
             modal.find("#artname").val(artname);
             modal.find("#artdes").val(artdes);
-            modal.find("#artimgsrc").val(artimgsrc);
+            modal.find("#artimgsrc").val(artimgsrc); 
+            modal.find("#artinfo").val(artinfo);
             modal.find("#artid").attr("readonly", "readonly");
         } else
             modal.find('.modal-title').text("ID:None");

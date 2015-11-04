@@ -4,11 +4,11 @@
     Layout = "~/Views/Shared/_BackGroundLayout.cshtml";
 
 
-    DbHelper db = new DbHelper();
+    var db = new DbHelper();
     Array lastproducted = db.LastProductedModule.ToArray();
 
-    int count = 1;
-    Dictionary<int, TeamEMVCProject.Models.LastProductedModel> lastPorducts = lastproducted.Cast<LastProductedModel>().ToDictionary(item => count++);
+    var count = 1;
+    var lastPorducts = lastproducted.Cast<LastProductedModel>().ToDictionary(item => count++);
 }
 
 
@@ -97,46 +97,46 @@
 @Html.Partial("~/Views/BackGround/Partials/BackGround_Component_LastedProductedEdit.cshtml");
 
 
-        <!-- JS -->
-        <script type="text/javascript" src="~/assets/js/jquery-2.1.3.min.js"></script>    <!-- jQuery -->
-        <script type="text/javascript" src="~/assets/js/templatemo-script.js"></script>      
-        <script>
+<!-- JS -->
+<script type="text/javascript" src="~/assets/js/jquery-2.1.3.min.js"></script>    <!-- jQuery -->
+<script type="text/javascript" src="~/assets/js/templatemo-script.js"></script>
+<script>
 
-            jQuery('#ProductEdit').on('show.bs.modal', function (event) {
+    jQuery('#ProductEdit').on('show.bs.modal', function (event) {
 
-                // 触发弹出层的物体
-                var button = jQuery(event.relatedTarget);
-                //获取作品信息
-                var proid = button.data('proid');
-                //var proname = button.data('proname');
-                //var prodes = button.data('prodes');
-                //var prosrc = button.data('prosrc');
+        // 触发弹出层的物体
+        var button = jQuery(event.relatedTarget);
+        //获取作品信息
+        var proid = button.data('proid');
+        //var proname = button.data('proname');
+        //var prodes = button.data('prodes');
+        //var prosrc = button.data('prosrc');
 
-                var modal = jQuery(this);
+        var modal = jQuery(this);
 
-                if (proid) {
-                    modal.find('.modal-title').text("ID:" + proid);
+        if (proid) {
+            modal.find('.modal-title').text("ID:" + proid);
 
-                    modal.find("#proid").val(proid);
-                    modal.find("#proid").attr("readonly", "readonly");
-                }
-                else
-                    modal.find('.modal-title').text("ID:None");
+            modal.find("#proid").val(proid);
+            modal.find("#proid").attr("readonly", "readonly");
+        } else
+            modal.find('.modal-title').text("ID:None");
 
-            })
+    });
 
-            jQuery('#Warning').on('show.bs.modal', function (event) {
+    jQuery('#Warning').on('show.bs.modal', function (event) {
 
-                // 触发弹出层的物体
-                var button = jQuery(event.relatedTarget);
-                //获取删除用户信息
-                var warninfo = button.data('warninfo');
+        // 触发弹出层的物体
+        var button = jQuery(event.relatedTarget);
+        //获取删除用户信息
+        var warninfo = button.data('warninfo');
 
-                var modal = jQuery(this);
+        var modal = jQuery(this);
 
-                if (warninfo) {
-                    modal.find("#WarningInfo").val(warninfo);
-                    modal.find("#WarningInfo").attr("name", "deleteId");
-                }
-            })
-        </script>
+        if (warninfo) {
+            modal.find("#WarningInfo").val(warninfo);
+            modal.find("#WarningInfo").attr("name", "deleteId");
+        }
+    });
+</script>
+

@@ -15,6 +15,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="App_Code/TeamShareInfo.cs">
       <publishTime>09/21/2015 14:40:37</publishTime>
     </File>
+    <File Include="assets/css/bootstrap-markdown.min.css">
+      <publishTime>11/01/2015 15:41:05</publishTime>
+    </File>
     <File Include="assets/css/bootstrap-treeview.min.css">
       <publishTime>10/19/2015 08:29:16</publishTime>
     </File>
@@ -22,7 +25,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/23/2015 10:09:28</publishTime>
     </File>
     <File Include="assets/css/ChatPanel.css">
-      <publishTime>10/28/2015 10:31:06</publishTime>
+      <publishTime>10/28/2015 21:00:59</publishTime>
     </File>
     <File Include="assets/css/font-awesome.min.css">
       <publishTime>09/21/2015 14:39:07</publishTime>
@@ -34,10 +37,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/25/2015 09:28:54</publishTime>
     </File>
     <File Include="assets/css/style.css">
-      <publishTime>09/23/2015 11:53:52</publishTime>
+      <publishTime>10/31/2015 21:40:38</publishTime>
     </File>
     <File Include="assets/css/templatemo-style.css">
-      <publishTime>10/28/2015 10:30:34</publishTime>
+      <publishTime>10/31/2015 21:56:41</publishTime>
     </File>
     <File Include="assets/fonts/fontawesome-webfont.eot">
       <publishTime>09/21/2015 14:39:07</publishTime>
@@ -357,6 +360,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/Information/PDF/虚幻美术设计流程完整汉化版.pdf">
       <publishTime>10/25/2015 23:25:19</publishTime>
     </File>
+    <File Include="assets/js/bootstrap-markdown.js">
+      <publishTime>11/01/2015 15:41:11</publishTime>
+    </File>
     <File Include="assets/js/bootstrap-treeview.min.js">
       <publishTime>10/19/2015 08:28:51</publishTime>
     </File>
@@ -381,6 +387,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/js/jquery.actual.min.js">
       <publishTime>09/21/2015 14:39:07</publishTime>
     </File>
+    <File Include="assets/js/jquery.bootstrap.newsbox.min.js">
+      <publishTime>10/31/2015 21:41:28</publishTime>
+    </File>
     <File Include="assets/js/jquery.min.js">
       <publishTime>09/23/2015 09:40:15</publishTime>
     </File>
@@ -390,11 +399,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="assets/js/jsoneditor.min.js">
       <publishTime>10/25/2015 21:16:38</publishTime>
     </File>
+    <File Include="assets/js/markdown.js">
+      <publishTime>11/02/2015 13:20:28</publishTime>
+    </File>
     <File Include="assets/js/respond.js">
       <publishTime>09/21/2015 14:39:07</publishTime>
     </File>
     <File Include="assets/js/script.js">
-      <publishTime>10/19/2015 17:09:41</publishTime>
+      <publishTime>11/04/2015 14:45:16</publishTime>
     </File>
     <File Include="assets/js/selectivizr.js">
       <publishTime>09/21/2015 14:39:07</publishTime>
@@ -403,7 +415,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2015 10:27:10</publishTime>
     </File>
     <File Include="assets/js/templatemo-script.js">
-      <publishTime>10/14/2015 13:10:53</publishTime>
+      <publishTime>11/04/2015 14:45:00</publishTime>
+    </File>
+    <File Include="assets/js/to-markdown.js">
+      <publishTime>11/02/2015 13:20:24</publishTime>
     </File>
     <File Include="assets/Video/movie.ogg">
       <publishTime>10/19/2015 20:57:28</publishTime>
@@ -413,6 +428,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/App_Code/SignalR/TeamEServerSignal.cs">
       <publishTime>10/28/2015 09:55:34</publishTime>
+    </File>
+    <File Include="bin/assets/css/bootstrap-markdown.min.css">
+      <publishTime>11/01/2015 15:41:05</publishTime>
     </File>
     <File Include="bin/assets/css/bootstrap-treeview.min.css">
       <publishTime>10/19/2015 08:29:16</publishTime>
@@ -430,10 +448,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/25/2015 09:28:54</publishTime>
     </File>
     <File Include="bin/assets/css/style.css">
-      <publishTime>09/23/2015 11:53:52</publishTime>
+      <publishTime>10/31/2015 21:40:38</publishTime>
     </File>
     <File Include="bin/assets/css/templatemo-style.css">
-      <publishTime>10/28/2015 10:30:34</publishTime>
+      <publishTime>10/31/2015 21:56:41</publishTime>
     </File>
     <File Include="bin/assets/fonts/fontawesome-webfont.eot">
       <publishTime>09/21/2015 14:39:07</publishTime>
@@ -753,6 +771,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/assets/Information/PDF/虚幻美术设计流程完整汉化版.pdf">
       <publishTime>10/25/2015 23:25:19</publishTime>
     </File>
+    <File Include="bin/assets/js/bootstrap-markdown.js">
+      <publishTime>11/01/2015 15:41:11</publishTime>
+    </File>
     <File Include="bin/assets/js/bootstrap-treeview.min.js">
       <publishTime>10/19/2015 08:28:51</publishTime>
     </File>
@@ -777,6 +798,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/assets/js/jquery.actual.min.js">
       <publishTime>09/21/2015 14:39:07</publishTime>
     </File>
+    <File Include="bin/assets/js/jquery.bootstrap.newsbox.min.js">
+      <publishTime>10/31/2015 21:41:28</publishTime>
+    </File>
     <File Include="bin/assets/js/jquery.min.js">
       <publishTime>09/23/2015 09:40:15</publishTime>
     </File>
@@ -786,11 +810,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/assets/js/jsoneditor.min.js">
       <publishTime>10/25/2015 21:16:38</publishTime>
     </File>
+    <File Include="bin/assets/js/markdown.js">
+      <publishTime>11/02/2015 13:20:28</publishTime>
+    </File>
     <File Include="bin/assets/js/respond.js">
       <publishTime>09/21/2015 14:39:07</publishTime>
     </File>
     <File Include="bin/assets/js/script.js">
-      <publishTime>10/19/2015 17:09:41</publishTime>
+      <publishTime>11/04/2015 14:45:16</publishTime>
     </File>
     <File Include="bin/assets/js/selectivizr.js">
       <publishTime>09/21/2015 14:39:07</publishTime>
@@ -799,7 +826,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/28/2015 10:27:10</publishTime>
     </File>
     <File Include="bin/assets/js/templatemo-script.js">
-      <publishTime>10/14/2015 13:10:53</publishTime>
+      <publishTime>11/04/2015 14:45:00</publishTime>
+    </File>
+    <File Include="bin/assets/js/to-markdown.js">
+      <publishTime>11/02/2015 13:20:24</publishTime>
     </File>
     <File Include="bin/assets/Video/movie.ogg">
       <publishTime>10/19/2015 20:57:28</publishTime>
@@ -892,22 +922,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/07/2015 01:11:16</publishTime>
     </File>
     <File Include="bin/TeamEMVCProject.dll">
-      <publishTime>10/28/2015 16:10:44</publishTime>
+      <publishTime>11/04/2015 15:29:00</publishTime>
     </File>
     <File Include="bin/Views/BackGround/BackGround_Article.cshtml">
-      <publishTime>10/28/2015 09:51:00</publishTime>
+      <publishTime>11/04/2015 15:06:53</publishTime>
     </File>
     <File Include="bin/Views/BackGround/BackGround_DataManager.cshtml">
-      <publishTime>10/14/2015 15:14:24</publishTime>
+      <publishTime>10/28/2015 20:49:15</publishTime>
     </File>
     <File Include="bin/Views/BackGround/BackGround_GameProject.cshtml">
-      <publishTime>10/28/2015 08:46:41</publishTime>
+      <publishTime>11/02/2015 17:27:45</publishTime>
     </File>
     <File Include="bin/Views/BackGround/BackGround_Index.cshtml">
-      <publishTime>10/28/2015 09:02:05</publishTime>
+      <publishTime>11/02/2015 14:57:28</publishTime>
     </File>
     <File Include="bin/Views/BackGround/BackGround_Information.cshtml">
-      <publishTime>10/26/2015 13:27:18</publishTime>
+      <publishTime>11/01/2015 19:56:30</publishTime>
     </File>
     <File Include="bin/Views/BackGround/BackGround_Login.cshtml">
       <publishTime>10/28/2015 09:02:07</publishTime>
@@ -916,7 +946,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/19/2015 18:45:45</publishTime>
     </File>
     <File Include="bin/Views/BackGround/BackGround_UserManager.cshtml">
-      <publishTime>10/28/2015 09:02:05</publishTime>
+      <publishTime>10/28/2015 20:49:15</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>09/07/2015 01:11:17</publishTime>
@@ -1141,19 +1171,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2015 14:38:00</publishTime>
     </File>
     <File Include="Views/BackGround/BackGround_Article.cshtml">
-      <publishTime>10/28/2015 09:51:00</publishTime>
+      <publishTime>11/04/2015 15:06:53</publishTime>
+    </File>
+    <File Include="Views/BackGround/BackGround_ArticleDetail.cshtml">
+      <publishTime>11/02/2015 18:03:51</publishTime>
     </File>
     <File Include="Views/BackGround/BackGround_DataManager.cshtml">
-      <publishTime>10/14/2015 15:14:24</publishTime>
+      <publishTime>10/28/2015 20:49:15</publishTime>
     </File>
     <File Include="Views/BackGround/BackGround_GameProject.cshtml">
-      <publishTime>10/28/2015 08:46:41</publishTime>
+      <publishTime>11/02/2015 17:27:45</publishTime>
     </File>
     <File Include="Views/BackGround/BackGround_Index.cshtml">
-      <publishTime>10/28/2015 09:02:05</publishTime>
+      <publishTime>11/02/2015 14:57:28</publishTime>
     </File>
     <File Include="Views/BackGround/BackGround_Information.cshtml">
-      <publishTime>10/26/2015 13:27:18</publishTime>
+      <publishTime>11/01/2015 19:56:30</publishTime>
     </File>
     <File Include="Views/BackGround/BackGround_Login.cshtml">
       <publishTime>10/28/2015 09:02:07</publishTime>
@@ -1162,34 +1195,40 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/19/2015 18:45:45</publishTime>
     </File>
     <File Include="Views/BackGround/BackGround_UserManager.cshtml">
-      <publishTime>10/28/2015 09:02:05</publishTime>
+      <publishTime>10/28/2015 20:49:15</publishTime>
+    </File>
+    <File Include="Views/BackGround/Partials/BackGround_Component_ArticleEdit.cshtml">
+      <publishTime>11/04/2015 14:42:56</publishTime>
     </File>
     <File Include="Views/BackGround/Partials/BackGround_Component_ChatPanel.cshtml">
-      <publishTime>10/28/2015 10:31:47</publishTime>
+      <publishTime>10/31/2015 14:46:39</publishTime>
     </File>
     <File Include="Views/BackGround/Partials/BackGround_Component_LastedProductedEdit.cshtml">
-      <publishTime>10/25/2015 13:38:01</publishTime>
+      <publishTime>11/03/2015 22:53:29</publishTime>
     </File>
     <File Include="Views/BackGround/Partials/BackGround_Component_LeftSilderBar.cshtml">
       <publishTime>10/14/2015 15:45:50</publishTime>
     </File>
     <File Include="Views/BackGround/Partials/BackGround_Component_RightNav.cshtml">
-      <publishTime>10/14/2015 13:25:30</publishTime>
+      <publishTime>10/28/2015 20:49:14</publishTime>
+    </File>
+    <File Include="Views/Home/Article.cshtml">
+      <publishTime>11/02/2015 18:03:58</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>10/20/2015 09:53:02</publishTime>
     </File>
     <File Include="Views/Home/LastedProduect.cshtml">
-      <publishTime>10/28/2015 08:46:48</publishTime>
+      <publishTime>11/01/2015 19:07:24</publishTime>
     </File>
     <File Include="Views/Home/TeamShare.cshtml">
-      <publishTime>09/23/2015 17:51:00</publishTime>
+      <publishTime>11/01/2015 19:09:20</publishTime>
     </File>
     <File Include="Views/Partials/Carousel.cshtml">
       <publishTime>09/23/2015 11:12:31</publishTime>
     </File>
     <File Include="Views/Partials/Index_ConractUs.cshtml">
-      <publishTime>09/21/2015 14:38:57</publishTime>
+      <publishTime>11/03/2015 23:29:20</publishTime>
     </File>
     <File Include="Views/Partials/Index_Footer.cshtml">
       <publishTime>09/21/2015 14:38:57</publishTime>
@@ -1198,7 +1237,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/23/2015 08:58:18</publishTime>
     </File>
     <File Include="Views/Partials/Index_LastedProduct.cshtml">
-      <publishTime>10/28/2015 08:58:40</publishTime>
+      <publishTime>11/02/2015 13:07:18</publishTime>
     </File>
     <File Include="Views/Partials/Index_Target.cshtml">
       <publishTime>09/21/2015 14:38:57</publishTime>
@@ -1207,25 +1246,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/21/2015 14:38:57</publishTime>
     </File>
     <File Include="Views/Partials/Index_TeamShare.cshtml">
-      <publishTime>10/28/2015 08:46:48</publishTime>
+      <publishTime>11/02/2015 17:55:08</publishTime>
     </File>
     <File Include="Views/Partials/ModalComponent.cshtml">
       <publishTime>10/28/2015 09:02:07</publishTime>
     </File>
     <File Include="Views/Partials/RightMenu.cshtml">
-      <publishTime>09/23/2015 13:35:13</publishTime>
+      <publishTime>11/01/2015 19:54:32</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/21/2015 14:37:57</publishTime>
     </File>
     <File Include="Views/Shared/_BackGroundLayout.cshtml">
-      <publishTime>10/19/2015 17:09:50</publishTime>
+      <publishTime>11/01/2015 19:39:45</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>10/26/2015 14:02:37</publishTime>
+      <publishTime>11/02/2015 13:07:13</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>09/21/2015 14:37:57</publishTime>
+      <publishTime>11/02/2015 14:02:27</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>09/23/2015 08:27:28</publishTime>

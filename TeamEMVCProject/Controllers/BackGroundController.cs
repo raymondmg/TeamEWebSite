@@ -298,6 +298,7 @@ namespace TeamEMVCProject.Controllers
                 nowEditModel.ArticlePublishTime = DateTime.Now;
                 nowEditModel.ArticleDescribe = model.ArticleDescribe;
                 nowEditModel.ArticleImgSrc = model.ArticleImgSrc;
+                nowEditModel.ArticleInfo = model.ArticleInfo;
             //}
             _db.SaveChanges();
 

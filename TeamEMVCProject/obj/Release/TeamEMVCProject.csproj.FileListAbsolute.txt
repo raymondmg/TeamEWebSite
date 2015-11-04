@@ -197,3 +197,8 @@ F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\Microsoft.AspNet.Signal
 F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\Microsoft.Owin.xml
 F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\Microsoft.Owin.Host.SystemWeb.xml
 F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\Microsoft.Owin.Security.xml
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\css\bootstrap-markdown.min.css
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\js\bootstrap-markdown.js
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\js\jquery.bootstrap.newsbox.min.js
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\js\markdown.js
+F:\Project\TeamEWebSite\TeamEWebSite\TeamEMVCProject\bin\assets\js\to-markdown.js
