@@ -1,0 +1,72 @@
+﻿@model TeamEMVCProject.Models.UserModel
+@{
+    Layout = null;
+    Session["UserName"] = null;
+}
+@*后台登陆模块*@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TeamE 后台管理系统</title>
+    <meta name="description" content="">
+    <meta name="author" content="Raymond">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/templatemo-style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="light-gray-bg">
+    <div class="templatemo-content-widget templatemo-login-widget white-bg">
+        <header class="text-center">
+            <div class="square"></div>
+            <h1>TeamE 后台管理系统</h1>
+        </header>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <form action="index.html" class="templatemo-login-form">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user fa-fw"></i></div>
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "请输入账号" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-key fa-fw"></i></div>
+                    @Html.PasswordFor(m => m.PassWord, new { @class = "form-control", @placeholder = "******", @type="password" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox squaredTwo">
+                    <input type="checkbox" id="c1" name="cc" />
+                    <label for="c1"><span></span>记住密码</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="templatemo-blue-button width-100">登陆</button>
+            </div>
+        </form>
+    </fieldset>
+}
+</div>
+
+    <div class="templatemo-content-widget templatemo-login-widget templatemo-register-widget white-bg">
+        <p>还没有注册账号？<strong><a href="BackGround_Register" class="blue-text">注册账号！</a></strong></p>
+    </div>
+</body>
+</html>

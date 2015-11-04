@@ -1,0 +1,27 @@
+﻿@using TeamEMVCProject.Models
+@{
+    Layout = "~/Views/Shared/_BackGroundLayout.cshtml";
+
+    var db = new DbHelper();
+    //技术文章信息
+    var articleInfo = db.ArticleShareModule.ToList<ArticleShare>();
+
+    var info = "没有可以显示的文章内容";
+
+    if (Request.QueryString["Article"] != null)
+    {
+        var articleId = Request.QueryString["Article"];
+
+        foreach (var item in articleInfo.Where(item => item.id == int.Parse(articleId)))
+        {
+            info = item.ArticleInfo;
+            break;
+        }
+    }
+}
+
+
+<div id="Article" class="container" style="margin-top:20px">
+    @Html.Raw(info);
+</div>
+
